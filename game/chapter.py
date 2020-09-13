@@ -1,11 +1,13 @@
 import nltk
 from autocorrect import Speller
+import spacy
 
 
 class Chapter:
     def __init__(self, game_manager):
         self.dictionary = game_manager.dictionary
         self.speller = Speller()
+        self.nlp = spacy.load('en_core_web_lg')
     
     def _variant_responses(self, response):
         # TODO handle different verbs conjugaisons
@@ -36,5 +38,19 @@ class Chapter:
             for mapping in mappings:
                 if data in mapping:
                     return mapping[data]
+        else:
+            nlp_response = self.nlp(response)
+            best_sim = {
+                "similarity": 0,
+                "expression": None,
+                "mapping": None
+            }
+            for mapping in mappings:
+                for key in mapping:
+                    sim = nlp_response.similarity(self.nlp(key))
+                    print(self.nlp(key), sim)
+                    if sim > best_sim["similarity"]:
+                        best_sim.update(similarity=sim, expression=key, mapping=mapping)
+            return best_sim["mapping"][best_sim["expression"]]
 
         return None
