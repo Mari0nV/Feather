@@ -6,7 +6,7 @@ import time
 
 class GameManager:
     def __init__(self):
-        with open('../data/dictionary.json') as json_file:
+        with open('../data/action_dictionary.json') as json_file:
             self.dictionary = json.load(json_file)
         with open("../data/replacements.json") as json_file:
             self.replacements = json.load(json_file)

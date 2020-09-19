@@ -15,6 +15,15 @@ class Status:
     def update(self, status_dict: dict):
         for status, value in status_dict.items():
             category, status = status.split('.')
+            if category == "places":
+                for place in self.status[category]:
+                    if self.status[category][place] == True:
+                        self.status["previous"] = {
+                            place: True
+                        }
+                        self.status[category][place] = False
+                
+
             self.status[category][status] = value
     
     def check_status(self, status: list):

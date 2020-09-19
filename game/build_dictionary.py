@@ -14,7 +14,7 @@ def build_dictionary(dictionary_dict, filename):
                 else:
                     response = verb
                 dictionary[response] = expression
-    
+
     with open(f"../data/{filename}.json", "w") as fd:
         json.dump(dictionary, fd)
 
