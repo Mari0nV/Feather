@@ -14,7 +14,7 @@ class Status:
     def check_status(self, status: list):
         for elt in status:
             if elt[0] == '!':
-                category, status_name = elt[1:].split('.')
+                category, status_name, *level = elt[1:].split('.')
                 if status_name in self.states[category] and self.states[category][status_name]:
                     return False
             else:

@@ -5,7 +5,8 @@ replacements = {
     "university": ["school", "college"],
     "spell": ["incantation"],
     "app": ["application"],
-    "light": ["flashlight", "torch"]
+    "light": ["flashlight", "torch"],
+    "spirit": ["ghost"]
 }
 
 if __name__ == '__main__':

@@ -39,5 +39,5 @@ generic_mapping = {
                 "Have you tried to focus on the beauty of life?"
             ]
         }
-    }
+    },
 }
