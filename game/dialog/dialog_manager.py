@@ -1,5 +1,6 @@
 
 from game.dialog.dialog_mapping import dialog_mapping
+from game.dialog.dialog_default_mapping import default_mapping
 from game.input_manager import InputManager
 import json
 import nltk
@@ -12,6 +13,7 @@ class DialogManager(InputManager):
 
         self.status_manager = status_manager
         self.dialog_mapping = dialog_mapping
+        self.dialog_default_mapping = default_mapping
         InputManager.__init__(self)
 
     def detect_dialog(self, response):
@@ -130,10 +132,10 @@ class DialogManager(InputManager):
             if line in self.dialog_dictionary:
                 data = self.dialog_dictionary[line]
                 if data in self.dialog_mapping:
-                    result = self.dialog_mapping[data]
-        
-        # nobody_there = {(): {"msg": ["Nobody answers."]}}
-        # return nobody_there, line, interlocutor
+                    result = self.dialog_mapping[data]     
+        else:
+            result = {(): {"msg": ["Nobody answers."]}}
+
 
         # check status
         if result:
@@ -144,6 +146,11 @@ class DialogManager(InputManager):
                         self.do_action(action, line)
                         return
             if not status:
+                self.do_action(action, line)
+        else:
+            presence = self.status_manager.get_presence()
+            if presence[0] in self.dialog_default_mapping:
+                action = self.dialog_default_mapping[presence[0]]
                 self.do_action(action, line)
     
     def do_action(self, action, skinned_resp):

@@ -51,3 +51,6 @@ class StatusManager:
         if "dead" in self.status["physical_state"]:
             return True
         return False
+    
+    def get_presence(self):
+        return [p for p, there in self.status["presence"].items() if there == True]
