@@ -1,6 +1,6 @@
 import json
 
-lines = {
+dialogs = {
     "danse": {
         "verbs": ["danse",],
         "next": ["around", "please", ""],

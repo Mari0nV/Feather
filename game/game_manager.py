@@ -1,19 +1,17 @@
 from game.chapters.forest_chapter.forest_chapter import ForestChapter
-from game.status import Status
-from game.dialog.dialog import Dialog
-import json
-import time
+from game.status_manager import StatusManager
+from game.dialog.dialog_manager import DialogManager
+from game.action.action_manager import ActionManager
+
 
 class GameManager:
     def __init__(self):
-        with open('../data/action_dictionary.json') as json_file:
-            self.dictionary = json.load(json_file)
-        with open("../data/replacements.json") as json_file:
-            self.replacements = json.load(json_file)
 
-        self.status = Status()
-        self.dialog = Dialog(self.status)
-        self.sequence = ForestChapter(self)
+        self.status_manager = StatusManager()
+        self.dialog_manager = DialogManager(self.status_manager)
+        self.action_manager = ActionManager(self.status_manager)
+
+        self.load_chapter(ForestChapter)
     
     def intro(self):
         print("You wake up in the middle of a forest, freezing as hell." \
@@ -21,16 +19,22 @@ class GameManager:
               " Is this a joke from university students? You're a freshman at the Strangeland university, and you were warned about hazing." \
               " What is the first thing you do?")
     
-    def load_sequence(self, chapter):
-        self.sequence = chapter
+    def load_chapter(self, chapter):
+        self.chapter = chapter()
 
     def start(self):
         self.intro()
         print()
         response = input()
         while response.lower() != "quit":
-            self.sequence.process_response(response)
-            if "dead" in self.status["physical_state"]:
+            self.process_response(response)
+            if self.status_manager.is_dead():
                 break
             response = input()
-
+    
+    def process_response(self, response):
+        # find response mapping in dialog or action dictionaries
+        if self.dialog_manager.detect_dialog(response):
+            self.dialog_manager.process_response(response)
+        else:
+            self.action_manager.process_response(response, self.chapter.mapping)

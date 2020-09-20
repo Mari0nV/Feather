@@ -1,7 +1,7 @@
 import json
 
 
-class Status:
+class StatusManager:
     def __init__(self):
         with open('../data/status.json') as json_file:
             self.status = json.load(json_file)
@@ -46,3 +46,8 @@ class Status:
                     return False
         
         return True
+    
+    def is_dead(self):
+        if "dead" in self.status["physical_state"]:
+            return True
+        return False

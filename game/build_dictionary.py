@@ -1,7 +1,6 @@
 import json
-from game.chapters.action_dictionary import actions
-from game.dialog.dialog_dictionary import lines
-
+from game.action.action_dictionary import actions
+from game.dialog.dialog_dictionary import dialogs
 
 
 def build_dictionary(dictionary_dict, filename):
@@ -20,4 +19,4 @@ def build_dictionary(dictionary_dict, filename):
 
 if __name__ == '__main__':
     build_dictionary(actions, "action_dictionary")
-    build_dictionary(lines, "dialog_dictionary")
+    build_dictionary(dialogs, "dialog_dictionary")
