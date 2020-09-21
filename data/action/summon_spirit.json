@@ -1,0 +1,25 @@
+{
+    "summon spirit": {
+        "places.cemetery": {
+            "msg": ["You're in a cemetery at night... Seems like the perfect time and place to summon a spirit. You improvise and mumble some random gibberish. bjao imaaa gluglu tiiiii, sassowi maaaa... Suddenly, a spirit made of a shimmering light appears in front of you."],
+            "update": {"active.spirit": true, "presence.spirit": true}
+        },
+        "active.spirit": {
+            "msg": ["You already summoned a spirit. The Invisible Realm rules state that you can only have one eery companion at a time."]
+        },
+        "default": {
+            "msg": ["You try to summon a spirit by murmuring some gibberish words, but nothings happens. Maybe the place isn't right? (Or you have no magical power, but can you really accept that conclusion?)"]
+        }
+    },
+    "combinations": [
+            {
+                "part1": ["summon", "call", "invocate"],
+                "part2": ["spirit", "ghost", "dead"]
+            },
+            {
+                "part1": ["say", "murmur", "cast"],
+                "part2": ["magic", ""],
+                "part3": ["spell"]
+            }
+        ]
+}

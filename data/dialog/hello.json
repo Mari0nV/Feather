@@ -1,0 +1,13 @@
+{
+    "hello": {
+        "presence.spirit": {
+            "msg": ["It triggers no reaction from the spirit."]
+        }
+    },
+    "combinations": [
+        {
+            "part1": ["hi", "hello", "greetings", "hey", "yo"],
+            "part2": ["there", ""]
+        }
+    ]
+}

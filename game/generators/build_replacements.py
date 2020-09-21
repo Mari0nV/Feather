@@ -1,11 +1,11 @@
 import json
 
 replacements = {
-    "phone": ["mobile", "telephone"],
+    "phone": ["telephone"],
     "university": ["school", "college"],
     "spell": ["incantation"],
     "app": ["application"],
-    "light": ["flashlight", "torch"],
+    "flashlight": ["torch"],
     "spirit": ["ghost"]
 }
 
@@ -15,5 +15,5 @@ if __name__ == '__main__':
         for w in word_list:
             repl[w] = word
     
-    with open("../data/replacements.json", "w") as fd:
+    with open("../../data/generated/replacements.json", "w") as fd:
         json.dump(repl, fd)
