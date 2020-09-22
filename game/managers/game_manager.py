@@ -1,5 +1,6 @@
 from game.managers.action_manager import ActionManager
 from game.managers.dialog_manager import DialogManager
+from game.managers.map_manager import MapManager
 from game.managers.status_manager import StatusManager
 from game.managers.output_manager import OutputManager
 
@@ -9,7 +10,8 @@ import json
 class GameManager:
     def __init__(self):
 
-        self.status_manager = StatusManager()
+        self.map_manager = MapManager()
+        self.status_manager = StatusManager(self.map_manager)
         self.output_manager = OutputManager()
         self.dialog_manager = DialogManager(self.status_manager, self.output_manager)
         self.action_manager = ActionManager(self.status_manager, self.output_manager)

@@ -2,13 +2,13 @@
     "forest": {
         "middle_forest": {
             "north": "cemetery",
-            "east": "university",
+            "east": "university_park",
             "south": "river",
             "west": "west_forest"
         },
         "cemetery": {
             "north": "wall",
-            "east": "stadium",
+            "east": "university_stadium",
             "south": "middle_forest",
             "west": "north_west_forest"
         },
@@ -26,6 +26,7 @@
         }
     },
     "university": {
-        
+        "university_stadium": {},
+        "university_park": {}
     }
 }

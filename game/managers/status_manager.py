@@ -2,11 +2,11 @@ import json
 
 
 class StatusManager:
-    def __init__(self):
+    def __init__(self, map_manager):
         with open('data/status/status.json') as fp:
             self.status = json.load(fp)
-        with open('data/map/map.json') as fp:
-            self.map = json.load(fp)
+        
+        self.map_manager = map_manager
     
     def __getitem__(self, key):
         return self.status[key]
@@ -34,7 +34,8 @@ class StatusManager:
             else:
                 category, status_name, *level = elt.split('.')
                 if category == "place" and self.status["place"] != status_name:
-                    return False
+                    if not self.map_manager.is_subplace(self.status["place"], status_name):
+                        return False
                 elif status_name not in self.status[category] or not self.status[category][status_name]:
                     return False
 
