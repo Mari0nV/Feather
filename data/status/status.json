@@ -1,0 +1,22 @@
+{
+    "place": "middle_forest",
+    "environment": {
+        "dark": true
+    },
+    "physical_state": {
+        "laying": true
+    },
+    "mental_state": {
+        "tired": true,
+        "dirty": true
+    },
+    "active": {},
+    "presence": {},
+    "information": {},
+    "inventory": [
+        "phone"
+    ],
+    "relationships": {
+    },
+    "day": 1
+}
