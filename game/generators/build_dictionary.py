@@ -8,7 +8,6 @@ import re
 def build_dictionary(json_files, filename):
     dictionary = {}
     for json_file in json_files:
-        print(json_file)
         with open(json_file, "r") as fp:
             combinations = json.load(fp)["combinations"]
         key = json_file.split('/')[-1].split('.')[0]
