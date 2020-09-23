@@ -23,8 +23,9 @@ class StatusManager:
             else:
                 self.status[category][status] = value
     
-    def check_status(self, status: list):
-        for elt in status:
+    def check_status(self, status: str):
+        for elt in status.split(','):
+            elt = elt.strip()
             if elt[0] == '!':
                 category, status_name, *level = elt[1:].split('.')
                 if category == "place" and self.status["place"] == status_name:
@@ -36,7 +37,10 @@ class StatusManager:
                 if category == "place" and self.status["place"] != status_name:
                     if not self.map_manager.is_subplace(self.status["place"], status_name):
                         return False
-                elif status_name not in self.status[category] or not self.status[category][status_name]:
+                elif status_name not in self.status[category]:
+                    return False
+                elif category not in ["place", "previous_place"] and \
+                    not self.status[category][status_name]:
                     return False
 
         return True
@@ -56,3 +60,6 @@ class StatusManager:
     
     def get_presence(self):
         return [p for p, there in self.status["presence"].items() if there == True]
+    
+    def get_current_place(self):
+        return self.status["place"]

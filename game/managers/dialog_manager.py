@@ -139,8 +139,7 @@ class DialogManager(InputManager):
         if result:
             for status, action in result.items():
                 if status:
-                    status_list = [status] if type(status) == str else list(status)
-                    if self.status_manager.check_status(status_list):
+                    if self.status_manager.check_status(status):
                         self.do_action(action, line)
                         return
             if not status:

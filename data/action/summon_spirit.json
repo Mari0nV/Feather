@@ -13,7 +13,7 @@
     },
     "combinations": [
             {
-                "part1": ["summon", "call", "invocate"],
+                "part1": ["summon", "call", "invoke"],
                 "part2": ["spirit", "ghost", "dead"]
             },
             {
