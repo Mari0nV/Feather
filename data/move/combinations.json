@@ -1,0 +1,8 @@
+{
+    "combinations": [
+        {
+            "part1": ["go", "walk", "run", "jog"],
+            "part2": ["to", "towards", "in", "into", ""]
+        }
+    ]
+}

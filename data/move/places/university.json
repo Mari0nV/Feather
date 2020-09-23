@@ -1,0 +1,18 @@
+{
+    "university": {
+        "!active.gps, !information.university": {
+            "msg": ["You wish you could, but you have no idea which direction to go."]
+        },
+        "active.gps, !information.university": {
+            "msg": ["You follow the indication of the GPS to go back to the university campus."],
+            "update": {"place.university": true}
+        },
+        "!place.university, information.university": {
+            "msg": ["You go back to the university campus."],
+            "update": {"place.university": true}
+        },
+        "place.university": {
+            "msg": ["You already are on the university campus."]
+        }
+    }
+}

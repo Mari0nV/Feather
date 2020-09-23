@@ -1,0 +1,17 @@
+{
+    "river": {
+        "!place.river, !information.river, active.gps)": {
+            "msg": ["You walk into the forest, not so eager to return home. Half an hour later, you arrive on the side of a turbulent river. The water flows dangerously above big rounded rocks."],
+            "update": {"place.river": true}
+        },
+        "!place.river, !information.river, !active.gps": {
+            "msg": ["How could you know where there is a river?"]
+        },
+        "!place.river, information.river": {
+            "msg": ["You walk towards the river. The sound of its restless flow is almost overwhelming."]
+        },
+        "place.river": {
+            "msg": ["You are already at the river."]
+        }
+    }
+}
