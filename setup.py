@@ -14,5 +14,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    requirements=["autocorrect", "nltk"]
+    install_requires=[
+        "nltk==3.5",
+        "autocorrect==2.1.0"
+        ]
 )
