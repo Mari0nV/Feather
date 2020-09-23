@@ -1,0 +1,16 @@
+{
+    "touch_spirit": {
+        "active.spirit": {
+            "msg": ["You try to touch the spirit but your hand passes through it. You feel a cold sensation in your entire body."]
+        },
+        "default": {
+            "msg": ["What are you talking about?"]
+        }
+    },
+    "combinations": [
+            {
+                "part1": ["touch", "grab"],
+                "part2": ["spirit", "ghost", "apparition"]
+            }
+        ]
+}

@@ -1,0 +1,18 @@
+{
+    "pick_up_phone": {
+        "active.phone": {
+            "msg": ["You already have your phone in your hands."]
+        },
+        "default": {
+            "msg": ["You retrieve your phone from your pocket. Surely it can help you in some way."],
+            "update": {"active.phone": true}
+        }
+    },
+    "combinations": [
+            {
+            "part1": ["pick up", "use", "open"],
+            "part2": ["mobile", ""],
+            "part3": ["phone"]
+            }
+        ]
+}

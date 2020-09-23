@@ -1,0 +1,32 @@
+{
+    "forest": {
+        "middle_forest": {
+            "north": "cemetery",
+            "east": "university_park",
+            "south": "river",
+            "west": "west_forest"
+        },
+        "cemetery": {
+            "north": "wall",
+            "east": "university_stadium",
+            "south": "middle_forest",
+            "west": "north_west_forest"
+        },
+        "river": {
+            "north": "middle_forest",
+            "south": "block_by_river",
+            "east": "east_river",
+            "west": "waterfall"
+        },
+        "west_forest": {
+            "north": "north_west_forest",
+            "south": "waterfall",
+            "east": "middle_forest",
+            "west": "block_by_forest"
+        }
+    },
+    "university": {
+        "university_stadium": {},
+        "university_park": {}
+    }
+}

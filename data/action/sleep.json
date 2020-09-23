@@ -1,0 +1,23 @@
+{
+    "sleep": {
+        "mental_state.tired, !place.cemetery, place.forest": {
+            "msg": ["You're so tired... You spot a somewhat-comfy pack of leaves and take a nap. When you wake up, it's still dark."],
+            "update": {"mental_state.tired": false}
+        },
+        "!mental_state.tired": {
+            "msg": ["You're not tired enough to be able to sleep."]
+        },
+        "mental_state.tired, place.cemetery": {
+            "msg": ["This cemetery is too creepy, you'll never find any sleep here."]
+        }
+    },
+    "combinations": [
+            {
+                "part1": ["sleep", "go back to sleep", "nap", "rest"]
+            },
+            {
+                "part1": ["take"],
+                "part2": ["nap", "rest"]
+            }
+        ]
+}

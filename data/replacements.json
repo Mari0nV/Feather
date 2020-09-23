@@ -1,0 +1,10 @@
+{
+    "replacements": {
+        "phone": ["telephone"],
+        "university": ["school", "college"],
+        "spell": ["incantation"],
+        "app": ["application"],
+        "flashlight": ["torch"],
+        "spirit": ["ghost"]
+    }
+}

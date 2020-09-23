@@ -1,0 +1,19 @@
+{
+    "put_phone_in_pocket": {
+        "active.phone": {
+            "msg": ["You put your phone in your pocket."],
+            "update": {"active.phone": false}
+        },
+        "default": {
+            "msg": ["You phone is already in your pocket."]
+        }
+    },
+    "combinations": [
+        {
+            "part1": ["put", "place"],
+            "part2": ["phone"],
+            "part3": ["in", "inside", ""],
+            "part4": ["pocket", "pockets", "inventory"]
+        }
+    ]
+}

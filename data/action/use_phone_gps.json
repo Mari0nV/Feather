@@ -1,0 +1,23 @@
+{
+    "use_phone_gps": {
+        "active.phone, active.gps": {
+            "msg": ["Where do you want to go?"]
+        },
+        "!active.phone, place.forest": {
+            "msg": ["You pick up your phone and open your gps application. The signal is weak, but you manage to load a map of the surroundings. University is an hour walk to the east. Every other direction shows only acres of forest."],
+            "update": {"active.phone": true, "active.gps": true}
+        },
+        "place.forest": {
+            "msg": ["You open your gps application. The signal is weak, but you manage to load a map of the surroundings. University is an hour walk to the east. Every other direction shows only acres of forest."],
+            "update": {"active.gps": true}
+        }
+    },
+    "combinations": [
+            {
+            "part1": ["use", "open"],
+            "part2": ["phone", ""],
+            "part3": ["gps"],
+            "part4": ["app", ""]
+            }
+        ]
+}

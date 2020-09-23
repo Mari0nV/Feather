@@ -1,19 +1,17 @@
 
-from game.dialog.dialog_mapping import dialog_mapping
-from game.dialog.dialog_default_mapping import default_mapping
-from game.input_manager import InputManager
+from game.managers.input_manager import InputManager
 import json
 import nltk
 import random
 
 class DialogManager(InputManager):
-    def __init__(self, status_manager):
-        with open('../data/dialog_dictionary.json', "r") as json_file:
+    def __init__(self, status_manager, output_manager):
+        with open('data/generated/dialog_dictionary.json', "r") as json_file:
             self.dialog_dictionary = json.load(json_file)
 
         self.status_manager = status_manager
-        self.dialog_mapping = dialog_mapping
-        self.dialog_default_mapping = default_mapping
+        self.output_manager = output_manager
+
         InputManager.__init__(self)
 
     def detect_dialog(self, response):
@@ -131,8 +129,8 @@ class DialogManager(InputManager):
         if not self.status_manager.is_alone():
             if line in self.dialog_dictionary:
                 data = self.dialog_dictionary[line]
-                if data in self.dialog_mapping:
-                    result = self.dialog_mapping[data]     
+                # if data in self.dialog_mapping:
+                #     result = self.dialog_mapping[data]     
         else:
             result = {(): {"msg": ["Nobody answers."]}}
 
@@ -141,21 +139,20 @@ class DialogManager(InputManager):
         if result:
             for status, action in result.items():
                 if status:
-                    status_list = [status] if type(status) == str else list(status)
-                    if self.status_manager.check_status(status_list):
+                    if self.status_manager.check_status(status):
                         self.do_action(action, line)
                         return
             if not status:
                 self.do_action(action, line)
         else:
             presence = self.status_manager.get_presence()
-            if presence[0] in self.dialog_default_mapping:
-                action = self.dialog_default_mapping[presence[0]]
-                self.do_action(action, line)
+            # if presence[0] in self.dialog_default_mapping:
+            #     action = self.dialog_default_mapping[presence[0]]
+            #     self.do_action(action, line)
     
     def do_action(self, action, skinned_resp):
         if "msg" in action:
-            print('\n', random.choice(action["msg"]).format(action=skinned_resp))
+            self.output_manager.print(random.choice(action["msg"]).format(action=skinned_resp))
         if "update" in action:
             self.status_manager.update(action["update"])
         if "next" in action:

@@ -1,0 +1,13 @@
+{
+    "danse": {
+        "presence.spirit": {
+            "msg": ["The spirit moves around you in a rythmic way."]
+        }
+    },
+    "combinations": [
+            {
+                "part1": ["danse", "move"],
+                "part2": ["around"]
+            }
+        ]
+}
