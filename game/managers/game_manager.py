@@ -1,11 +1,11 @@
+import json
+
 from game.managers.action_manager import ActionManager
 from game.managers.dialog_manager import DialogManager
 from game.managers.map_manager import MapManager
 from game.managers.move_manager import MoveManager
-from game.managers.status_manager import StatusManager
 from game.managers.output_manager import OutputManager
-
-import json
+from game.managers.status_manager import StatusManager
 
 
 class GameManager:
@@ -17,9 +17,9 @@ class GameManager:
         self.action_manager = ActionManager(self.status_manager, self.output_manager)
         self.dialog_manager = DialogManager(self.status_manager, self.output_manager)
         self.move_manager = MoveManager(
-            self.status_manager, self.output_manager, self.map_manager)
-        
-    
+            self.status_manager, self.output_manager, self.map_manager
+        )
+
     def intro(self):
         with open("data/intro.json", "r") as fp:
             intro = json.load(fp)["intro"]
@@ -33,7 +33,7 @@ class GameManager:
             if self.status_manager.is_dead():
                 break
             response = input()
-    
+
     def process_response(self, response):
         # find response mapping in dialog or action dictionaries
         if self.dialog_manager.detect_dialog(response):
