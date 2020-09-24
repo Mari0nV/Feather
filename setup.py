@@ -6,7 +6,7 @@ setuptools.setup(
     version="0.0.1",
     author="Mari0nV",
     description="A text game where you can write anything you want to do",
-    url="https://github.com/Mari0nV/TextGame",
+    url="https://github.com/Mari0nV/Feather",
     packages=["feather"],
     classifiers=[
         "Programming Language :: Python :: 3",
