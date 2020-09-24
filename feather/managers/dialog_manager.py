@@ -2,12 +2,13 @@ import json
 import random
 
 import nltk
+from feather.config import dialog_file
 from feather.managers.input_manager import InputManager
 
 
 class DialogManager(InputManager):
     def __init__(self, status_manager, output_manager):
-        with open("data/generated/dialog_dictionary.json", "r") as json_file:
+        with open(dialog_file, "r") as json_file:
             self.dialog_dictionary = json.load(json_file)
 
         self.status_manager = status_manager

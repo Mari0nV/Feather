@@ -30,7 +30,7 @@ def build_replacements(json_file, filename):
         for w in word_list:
             repl[w] = word
 
-    with open("data/generated/{filename}.json", "w") as fd:
+    with open(f"data/generated/{filename}.json", "w") as fd:
         json.dump(repl, fd)
 
 

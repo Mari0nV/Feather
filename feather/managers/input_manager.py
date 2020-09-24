@@ -2,11 +2,12 @@ import json
 
 import nltk
 from autocorrect import Speller
+from feather.config import replacements_file
 
 
 class InputManager:
     def __init__(self):
-        with open("data/generated/replacements.json") as json_file:
+        with open(replacements_file) as json_file:
             self.replacements = json.load(json_file)
 
         self.speller = Speller()
