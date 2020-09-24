@@ -26,3 +26,25 @@ def test_that_map_manager_detect_subplaces(
     map_manager = MapManager()
 
     assert map_manager.is_subplace(subplace, zone) == expected
+
+
+def test_that_map_manager_list_all_places():
+    map_manager = MapManager()
+
+    assert map_manager.list_places() == [
+        "forest",
+        "middle_forest",
+        "city",
+        "city_center"
+    ]
+
+
+def test_that_map_manager_list_all_directions():
+    map_manager = MapManager()
+
+    assert map_manager.list_directions() == {
+        "north",
+        "east",
+        "west",
+        "south"
+    }

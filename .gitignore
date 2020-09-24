@@ -26,6 +26,13 @@ var/
 .cache
 nosetests.xml
 coverage.xml
+htmlcov
 
 # Virtual environment
 venv/
+
+# Mac OS
+.DS_Store
+
+# Generated data files
+/data/generated
