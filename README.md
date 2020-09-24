@@ -1,6 +1,6 @@
-# TextWorld
+# Feather
 
-TextWorld is a game where you write down your actions and read the consequences.
+Feather is a game where you write down your actions and read the consequences.
 
 ## Setup
 
@@ -16,12 +16,13 @@ Your choices will lead you to follow a wide variety of intrigues. Be aware, beca
 Clone this repository and type the following commands:
 ```
 pip install .
+python game/generators/build_dictionaries.py
 python game/main.py
 ```
 
 A small text introduction will be displayed. Write whatever action you wish to make (one action at a time, and usually starting with a verb).
 Examples:
 ```
-choose random direction
+go north
 take a nap
 ```
