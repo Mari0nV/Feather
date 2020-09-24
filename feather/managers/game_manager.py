@@ -1,11 +1,11 @@
 import json
 
-from game.managers.action_manager import ActionManager
-from game.managers.dialog_manager import DialogManager
-from game.managers.map_manager import MapManager
-from game.managers.move_manager import MoveManager
-from game.managers.output_manager import OutputManager
-from game.managers.status_manager import StatusManager
+from feather.managers.action_manager import ActionManager
+from feather.managers.dialog_manager import DialogManager
+from feather.managers.map_manager import MapManager
+from feather.managers.move_manager import MoveManager
+from feather.managers.output_manager import OutputManager
+from feather.managers.status_manager import StatusManager
 
 
 class GameManager:

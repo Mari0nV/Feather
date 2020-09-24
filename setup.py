@@ -2,12 +2,12 @@ import setuptools
 
 
 setuptools.setup(
-    name="game",
+    name="feather",
     version="0.0.1",
     author="Mari0nV",
-    description="A small text game",
+    description="A text game where you can write anything you want to do",
     url="https://github.com/Mari0nV/TextGame",
-    packages=["game"],
+    packages=["feather"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

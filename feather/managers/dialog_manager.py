@@ -2,7 +2,7 @@ import json
 import random
 
 import nltk
-from game.managers.input_manager import InputManager
+from feather.managers.input_manager import InputManager
 
 
 class DialogManager(InputManager):

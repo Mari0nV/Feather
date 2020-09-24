@@ -1,6 +1,6 @@
 import json
 
-from game.managers.action_manager import ActionManager
+from feather.managers.action_manager import ActionManager
 
 
 class MoveManager(ActionManager):

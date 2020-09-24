@@ -1,7 +1,7 @@
 import json
 import random
 
-from game.managers.input_manager import InputManager
+from feather.managers.input_manager import InputManager
 
 
 class ActionManager(InputManager):

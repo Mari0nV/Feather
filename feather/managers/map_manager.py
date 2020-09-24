@@ -1,9 +1,11 @@
 import json
 
+from feather.config import map_file
+
 
 class MapManager:
     def __init__(self):
-        with open("data/map/map.json") as fp:
+        with open(map_file) as fp:
             self.map = json.load(fp)
 
     def next_place(self, place, direction):
@@ -12,8 +14,8 @@ class MapManager:
                 return zone[place][direction]
 
     def is_subplace(self, place, zone):
-        for _, zone in self.map.items():
-            if place in zone:
+        if zone in self.map:
+            if place in self.map[zone]:
                 return True
 
         return False

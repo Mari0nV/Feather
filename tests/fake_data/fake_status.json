@@ -1,0 +1,16 @@
+{
+    "place": "middle_forest",
+    "environment": {},
+    "physical_state": {},
+    "mental_state": {
+        "tired": true
+    },
+    "active": {
+        "gps": false
+    },
+    "presence": {},
+    "information": {},
+    "inventory": [],
+    "relationships": {},
+    "day": 1
+}

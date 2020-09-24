@@ -1,10 +1,12 @@
 import json
 
+from feather.config import status_file
+
 
 class StatusManager:
     def __init__(self, map_manager):
-        with open("data/status/status.json") as fp:
-            self.status = json.load(fp)
+        with open(status_file) as json_file:
+            self.status = json.load(json_file)
 
         self.map_manager = map_manager
 

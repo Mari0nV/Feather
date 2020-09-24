@@ -1,4 +1,4 @@
-from game.managers.game_manager import GameManager
+from feather.managers.game_manager import GameManager
 
 
 if __name__ == "__main__":

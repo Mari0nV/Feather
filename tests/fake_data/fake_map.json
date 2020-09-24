@@ -1,0 +1,15 @@
+{
+    "forest": {
+        "middle_forest": {
+            "east": "east_forest",
+            "west": "west_forest",
+            "north": "north_forest",
+            "south": "south_forest"
+        }
+    },
+    "city": {
+        "city_center": {
+            "east": "mall"
+        }
+    }
+}
