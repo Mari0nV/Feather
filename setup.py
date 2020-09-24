@@ -7,7 +7,7 @@ setuptools.setup(
     author="Mari0nV",
     description="A text game where you can write anything you want to do",
     url="https://github.com/Mari0nV/Feather",
-    packages=["feather"],
+    packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
