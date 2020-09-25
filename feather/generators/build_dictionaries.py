@@ -21,6 +21,21 @@ def build_dictionary(json_files, filename):
         json.dump(dictionary, fd)
 
 
+def build_combinations(json_file, filename):
+    all_combinations = []
+
+    with open(json_file, "r") as fp:
+        combinations = json.load(fp)["combinations"]
+
+    for group in combinations:
+        for combination in itertools.product(*group.values()):
+            word = re.sub(" +", " ", " ".join(combination))
+            all_combinations.append(word)
+
+    with open(f"data/generated/{filename}.json", "w+") as fd:
+        json.dump({"combinations": all_combinations}, fd)
+
+
 def build_replacements(json_file, filename):
     with open(f"data/{filename}.json", "r") as fp:
         replacements = json.load(fp)["replacements"]
@@ -35,15 +50,21 @@ def build_replacements(json_file, filename):
 
 
 if __name__ == "__main__":
-    dialog_path = "data/dialog"
+    # Building speech dictionary
+    dialog_path = "data/dialog/speech"
     dialogs = [
         f"{dialog_path}/{f}"
         for f in listdir(dialog_path)
         if isfile(join(dialog_path, f))
     ]
 
-    build_dictionary(dialogs, "dialog_dictionary")
+    build_dictionary(dialogs, "speech_dictionary")
 
+    # Building dialog combinations
+    dialog_combinations_path = "data/dialog/combinations.json"
+    build_combinations(dialog_combinations_path, "dialog_combinations")
+
+    # Building action dictionary
     action_path = "data/action"
     actions = [
         f"{action_path}/{f}"
@@ -52,8 +73,10 @@ if __name__ == "__main__":
     ]
     build_dictionary(actions, "action_dictionary")
 
+    # Building move combinations
     move_path = "data/move/combinations.json"
-    build_dictionary([move_path], "move_dictionary")
+    build_combinations(move_path, "move_combinations")
 
+    # Building replacements dictionary
     replacement_path = "data/replacements.json"
     build_replacements(replacement_path, "replacements")

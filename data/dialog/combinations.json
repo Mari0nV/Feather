@@ -1,0 +1,24 @@
+{
+    "combinations": [
+        {
+            "part1": ["say", "tell", "talk", "murmur", "shout"],
+            "part2": ["to"],
+            "part3": ["{interlocutor}", "him", "her"],
+            "part4": ["that", ""],
+            "part5": ["{speech}", "\"{speech}\""]
+        },
+        {
+            "part1": ["say", "tell", "talk", "murmur", "shout"],
+            "part2": ["{speech}", "\"{speech}\""],
+            "part3": ["to", ""],
+            "part4": ["{interlocutor}", ""]
+        },
+        {
+            "part1": ["-"],
+            "part2": ["{speech}", "\"{speech}\""]
+        },
+        {
+            "part1": ["\"{speech}\""]
+        }
+    ]
+}
