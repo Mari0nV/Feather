@@ -1,8 +1,11 @@
 import itertools
 import json
 import re
-from os import listdir
-from os.path import isfile, join
+import os
+
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 
 
 def build_dictionary(json_files, filename):
@@ -45,17 +48,21 @@ def build_replacements(json_file, filename):
         for w in word_list:
             repl[w] = word
 
-    with open(f"data/generated/{filename}.json", "w") as fd:
+    with open(f"data/generated/{filename}.json", "w+") as fd:
         json.dump(repl, fd)
 
 
 if __name__ == "__main__":
+    if not os.path.exists("data/generated"):
+         os.mkdir("data/generated")
+
     # Building speech dictionary
     dialog_path = "data/dialog/speech"
+    dialog_path = "data/dialog"
     dialogs = [
         f"{dialog_path}/{f}"
-        for f in listdir(dialog_path)
-        if isfile(join(dialog_path, f))
+        for f in os.listdir(dialog_path)
+        if os.path.isfile(os.path.join(dialog_path, f))
     ]
 
     build_dictionary(dialogs, "speech_dictionary")
@@ -68,8 +75,8 @@ if __name__ == "__main__":
     action_path = "data/action"
     actions = [
         f"{action_path}/{f}"
-        for f in listdir(action_path)
-        if isfile(join(action_path, f))
+        for f in os.listdir(action_path)
+        if os.path.isfile(os.path.join(action_path, f))
     ]
     build_dictionary(actions, "action_dictionary")
 

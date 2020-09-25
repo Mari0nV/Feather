@@ -14,24 +14,6 @@ class ActionManager(InputManager):
         self.output_manager = output_manager
         InputManager.__init__(self)
 
-    def _skin_response(self, text, tags):
-        # replacing some words
-        for i, word in enumerate(text):
-            if word in self.replacements:
-                text[i] = self.replacements[word]
-                tags[i] = (self.replacements[word], tags[i][1])
-
-        skinned = ""
-        # removing superfluous
-        for word, word_type in tags:
-            if word not in ["i", "my", "you", "your"] and word_type not in [
-                "AT",
-                "DET",
-            ]:
-                skinned += f"{word} "
-
-        return skinned[:-1]
-
     def _choose_action_from_status(self, data, key):
         # check status and return action
         for status, action in data[key].items():
