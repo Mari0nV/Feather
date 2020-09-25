@@ -1,6 +1,7 @@
 import json
 
 import nltk
+import random
 from autocorrect import Speller
 from feather.config import replacements_file
 
@@ -24,3 +25,33 @@ class InputManager:
         tags = nltk.pos_tag(text)
 
         return text, tags
+
+    def _retrieve_action(self, skinned_response):
+        pass
+
+    def _skin_response(self, text, tags):
+        pass
+
+    def process_response(self, response):
+        # check spelling and decompose response
+        text, tags = self._preprocess_response(response)
+
+        # remove subject, possessive, pronouns...
+        skinned_response = self._skin_response(text, tags)
+
+        # retrieve action from dictionary and status checking
+        action = self._retrieve_action(skinned_response)
+
+        # perform choosen action
+        if action:
+            self._do_action(action, skinned_response)
+
+    def _do_action(self, action, skinned_resp):
+        if "msg" in action:
+            self.output_manager.print(
+                random.choice(action["msg"]).format(action=skinned_resp)
+            )
+        if "update" in action:
+            self.status_manager.update(action["update"])
+        if "next" in action:
+            self.process_response(action["next"])

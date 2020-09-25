@@ -51,27 +51,3 @@ class ActionManager(InputManager):
 
             if data:
                 return self._choose_action_from_status(data, key)
-
-    def process_response(self, response):
-        # check spelling and decompose response
-        text, tags = self._preprocess_response(response)
-
-        # remove subject, possessive, pronouns...
-        skinned_response = self._skin_response(text, tags)
-
-        # retrieve action from dictionary and status checking
-        action = self.retrieve_action(skinned_response)
-
-        # perform choosen action
-        if action:
-            self.do_action(action, skinned_response)
-
-    def do_action(self, action, skinned_resp):
-        if "msg" in action:
-            self.output_manager.print(
-                random.choice(action["msg"]).format(action=skinned_resp)
-            )
-        if "update" in action:
-            self.status_manager.update(action["update"])
-        if "next" in action:
-            self.process_response(action["next"])

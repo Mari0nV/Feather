@@ -1,47 +1,50 @@
 import json
-import random
 
-import nltk
-from feather.config import dialog_file
+from feather.config import (
+    dialog_combinations_file,
+    speech_file
+)
 from feather.managers.input_manager import InputManager
+from feather.utils.utils import choose_best_decomposition
 
 
 class DialogManager(InputManager):
     def __init__(self, status_manager, output_manager):
-        with open(dialog_file, "r") as json_file:
-            self.dialog_dictionary = json.load(json_file)
+        with open(speech_file, "r") as json_file:
+            self.speech_dictionary = json.load(json_file)
+        with open(dialog_combinations_file, "r") as json_file:
+            self.dialog_combinations = json.load(json_file)
 
         self.status_manager = status_manager
         self.output_manager = output_manager
 
+        self._cache = {}
+
         InputManager.__init__(self)
 
+    def _parse_dialog(self, skinned_response):
+        parsing = choose_best_decomposition(skinned_response)
+
+        interlocutor = parsing["interlocutor"] if "interlocutor" in parsing else None
+        speech = parsing["speech"]
+
+        return interlocutor, speech
+
     def detect_dialog(self, response):
-        verbs = ["tell", "say", "speak", "explain", "declare", "order"]
+        skinned_response = self._skin_response()
+        parsing = choose_best_decomposition(skinned_response)
 
-        tokens = nltk.word_tokenize(response.lower())
-
-        if len(tokens) == 0:
-            return False
-
-        if tokens[0] in verbs:
+        if parsing:
+            self._cache = {
+                "skinned_response": skinned_response,
+                "parsing": parsing
+            }
             return True
 
-        if tokens[0] in ["i", "you"] and len(tokens) > 1 and tokens[1] in verbs:
-            return True
-
+        self._cache = {}
         return False
 
-    def _is_interlocutor(self, word, tag=None):
-        if word in ["him", "her", "spirit"]:
-            return True
-
-        if tag and tag in ["NP"]:
-            return True
-
-        return False
-
-    def _skin_tokens(self, tokens, tags):
+    def _skin_response(self, tokens, tags):
         # Remove player subject
         if tokens and tokens[0] in ["i", "you"]:
             tokens = tokens[1:]
@@ -57,86 +60,29 @@ class DialogManager(InputManager):
 
         return tokens, tags
 
-    def _parse_tokens(self, tokens, tags):
-        if len(tokens) in [0, 1]:
-            return None
+    def _retrieve_action(self, skinned_response):
+        interlocutor, speech = self._parse_dialog(skinned_response)
 
-        if len(tokens) == 2:
-            if tokens[1] in ["that", "to"] or self._is_interlocutor(*tags[1]):
-                return None
+        # # check if line is in dictionary
+        # if not self.status_manager.is_alone():
+        #     if line in self.speech_dictionary:
+        #         result = self.speech_dictionary[line]
+        #         # if data in self.dialog_mapping:
+        #         #     result = self.dialog_mapping[data]
+        # else:
+        #     result = {(): {"msg": ["Nobody answers."]}}
 
-        # "Say to Mary..."
-        if tokens[1] in ["to"] and self._is_interlocutor(*tags[2]):
-            # "Say to Mary that..."
-            if tokens[3] in ["that", "to"]:
-                if len(tokens) >= 4:
-                    return {"interlocutor": tokens[2], "tokens": tokens[4:]}
-                else:
-                    return None
-            # Say to Mary something...""
-            else:
-                return {"interlocutor": tokens[2], "tokens": tokens[3:]}
-
-        # "Tell Bob..."
-        if self._is_interlocutor(*tags[1]):
-            # "Tell Bob that..."
-            if tokens[2] in ["that", "to"]:
-                return {"interlocutor": tokens[1], "tokens": tokens[3:]}
-            # "Tell Bob something...
-            else:
-                return {"interlocutor": tokens[1], "tokens": tokens[2:]}
-
-        # TODO Tell that something
-
-        # "Say something to someone"
-        if tokens[-2] in ["to"] and self._is_interlocutor(*tags[-1]):
-            return {"interlocutor": tokens[-1], "tokens": tokens[1:-2]}
-
-        # "Say something"
-        return {"interlocutor": None, "tokens": tokens[1:]}
-
-    def process_response(self, response):
-        tokens, tags = self._preprocess_response(response)
-        skinned_tokens, skinned_tags = self._skin_tokens(tokens, tags)
-
-        dialog_tokens = self._parse_tokens(skinned_tokens, skinned_tags)
-        line = "".join(dialog_tokens["tokens"])
-        # interlocutor = dialog_tokens["interlocutor"]
-
-        # TODO handle interlocutor
-
-        result = None
-
-        # check if line is in dictionary
-        if not self.status_manager.is_alone():
-            if line in self.dialog_dictionary:
-                result = self.dialog_dictionary[line]
-                # if data in self.dialog_mapping:
-                #     result = self.dialog_mapping[data]
-        else:
-            result = {(): {"msg": ["Nobody answers."]}}
-
-        # check status
-        if result:
-            for status, action in result.items():
-                if status:
-                    if self.status_manager.check_status(status):
-                        self.do_action(action, line)
-                        return
-            if not status:
-                self.do_action(action, line)
-        else:
-            presence = self.status_manager.get_presence()
-            # if presence[0] in self.dialog_default_mapping:
-            #     action = self.dialog_default_mapping[presence[0]]
-            #     self.do_action(action, line)
-
-    def do_action(self, action, skinned_resp):
-        if "msg" in action:
-            self.output_manager.print(
-                random.choice(action["msg"]).format(action=skinned_resp)
-            )
-        if "update" in action:
-            self.status_manager.update(action["update"])
-        if "next" in action:
-            self.process_response(action["next"])
+        # # check status
+        # if result:
+        #     for status, action in result.items():
+        #         if status:
+        #             if self.status_manager.check_status(status):
+        #                 self.do_action(action, line)
+        #                 return
+        #     if not status:
+        #         self.do_action(action, line)
+        # else:
+        #     presence = self.status_manager.get_presence()
+        #     # if presence[0] in self.dialog_default_mapping:
+        #     #     action = self.dialog_default_mapping[presence[0]]
+        #     #     self.do_action(action, line)
