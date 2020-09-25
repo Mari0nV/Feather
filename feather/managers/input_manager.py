@@ -30,7 +30,22 @@ class InputManager:
         pass
 
     def _skin_response(self, text, tags):
-        pass
+        # replacing some words
+        for i, word in enumerate(text):
+            if word in self.replacements:
+                text[i] = self.replacements[word]
+                tags[i] = (self.replacements[word], tags[i][1])
+
+        skinned = ""
+        # removing superfluous
+        for word, word_type in tags:
+            if word not in ["i", "my", "you", "your"] and word_type not in [
+                "AT",
+                "DET",
+            ]:
+                skinned += f"{word} "
+
+        return skinned[:-1]
 
     def process_response(self, response):
         # check spelling and decompose response

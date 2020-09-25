@@ -1,13 +1,16 @@
 import json
 import random
 
-from feather.config import action_file
+from feather.config import (
+    action_dictionary_file,
+    action_path
+    )
 from feather.managers.input_manager import InputManager
 
 
 class ActionManager(InputManager):
     def __init__(self, status_manager, output_manager):
-        with open(action_file) as json_file:
+        with open(action_dictionary_file) as json_file:
             self.action_dictionary = json.load(json_file)
 
         self.status_manager = status_manager
@@ -28,7 +31,7 @@ class ActionManager(InputManager):
         if skinned_response in self.action_dictionary:
             key = self.action_dictionary[skinned_response]
 
-            with open(f"data/action/{key}.json", "r") as fp:
+            with open(f"{action_path}/{key}.json", "r") as fp:
                 data = json.load(fp)
 
             if data:
