@@ -9,11 +9,8 @@ map_file = os.environ.get(
     "FEATHER_MAP_FILE", "data/map/map.json")
 
 # Dictionaries
-action_file = os.environ.get(
-    "FEATHER_ACTION_FILE", "data/generated/action_dictionary.json")
-
-speech_file = os.environ.get(
-    "FEATHER_SPEECH_FILE", "data/generated/speech_dictionary.json")
+action_dictionary_file = os.environ.get(
+    "FEATHER_ACTION_DICTIONARY_FILE", "data/generated/action_dictionary.json")
 
 # Combinations
 dialog_combinations_file = os.environ.get(
@@ -25,3 +22,10 @@ move_combinations_file = os.environ.get(
 # Replacements
 replacements_file = os.environ.get(
     "FEATHER_REPLACEMENTS_FILE", "data/generated/replacements.json")
+
+# Paths
+speech_path = os.environ.get(
+    "FEATHER_SPEECH_PATH", "data/dialog/speech")
+
+action_path = os.environ.get(
+    "FEATHER_SPEECH_PATH", "data/action")

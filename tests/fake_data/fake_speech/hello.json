@@ -1,0 +1,7 @@
+{
+    "hello": {
+        "presence.wendy": {
+            "msg": ["hello, says Wendy."]
+        }
+    }
+}

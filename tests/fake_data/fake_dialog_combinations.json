@@ -1,0 +1,27 @@
+{
+    "combinations": [
+        "say to {interlocutor} that {speech}",
+        "say to {interlocutor} that \"{speech}\"",
+        "say to {interlocutor} {speech}",
+        "say to {interlocutor} \"{speech}\"",
+        "say to him that {speech}",
+        "say to him that \"{speech}\"",
+        "say to him {speech}",
+        "say to him \"{speech}\"",
+        "say to her that {speech}",
+        "say to her that \"{speech}\"",
+        "say to her {speech}",
+        "say to her \"{speech}\"",
+        "say {speech} to {interlocutor}",
+        "say {speech} to ",
+        "say {speech} {interlocutor}",
+        "say {speech} ",
+        "say \"{speech}\" to {interlocutor}",
+        "say \"{speech}\" to ",
+        "say \"{speech}\" {interlocutor}",
+        "say \"{speech}\" ",
+        "- {speech}",
+        "- \"{speech}\"",
+        "\"{speech}\""
+    ]
+}
