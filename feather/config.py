@@ -30,6 +30,9 @@ speech_path = os.environ.get(
 action_path = os.environ.get(
     "FEATHER_ACTION_PATH", "data/action")
 
+places_path = os.environ.get(
+    "FEATHER_PLACES_PATH", "data/move/places")
+
 # Introduction
 intro_file = os.environ.get(
     "FEATHER_INTRO_FILE", "data/intro.json"

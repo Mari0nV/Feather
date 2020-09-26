@@ -18,7 +18,7 @@ class GameManager:
         self.action_manager = ActionManager(self.status_manager, self.output_manager)
         self.dialog_manager = DialogManager(self.status_manager, self.output_manager)
         self.move_manager = MoveManager(
-            self.status_manager, self.output_manager, self.map_manager
+            self.status_manager, self.output_manager
         )
 
     def intro(self):
