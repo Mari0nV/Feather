@@ -13,15 +13,16 @@
         "say to her {speech}",
         "say to her \"{speech}\"",
         "say {speech} to {interlocutor}",
-        "say {speech} to ",
         "say {speech} {interlocutor}",
-        "say {speech} ",
+        "say {speech}",
         "say \"{speech}\" to {interlocutor}",
-        "say \"{speech}\" to ",
+        "say \"{speech}\"",
         "say \"{speech}\" {interlocutor}",
-        "say \"{speech}\" ",
+        "say \"{speech}\"",
         "- {speech}",
+        "-{speech}",
         "- \"{speech}\"",
+        "-\"{speech}\"",
         "\"{speech}\""
     ]
 }

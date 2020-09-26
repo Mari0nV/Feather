@@ -20,6 +20,10 @@ class DialogManager(InputManager):
 
         InputManager.__init__(self)
     
+    def _update_cache(self, skinned_response, parsing):
+        self._cache = {} if len(self._cache) > 100 else self._cache
+        self._cache[skinned_response] = parsing
+    
     def detect_dialog(self, response):
         # check spelling and decompose response
         text, tags = self._preprocess_response(response)
@@ -30,13 +34,9 @@ class DialogManager(InputManager):
         parsing = choose_best_decomposition(skinned_response, self.dialog_combinations)
 
         if parsing:
-            self._cache = {
-                "skinned_response": skinned_response,
-                "parsing": parsing
-            }
+            self._update_cache(skinned_response, parsing)
             return True
 
-        self._cache = {}
         return False
 
     def _parse_dialog(self, skinned_response):
@@ -57,15 +57,15 @@ class DialogManager(InputManager):
             return action
 
     def _retrieve_action(self, skinned_response):
-        if not self._cache:
-            interlocutor, speech = self._parse_dialog(skinned_response)
+        if skinned_response in self._cache:
+            interlocutor = self._cache[skinned_response]["interlocutor"]
+            speech = self._cache[skinned_response]["speech"]
         else:
-            interlocutor = self._cache["parsing"]["interlocutor"]
-            speech = self._cache["parsing"]["speech"]
+            interlocutor, speech = self._parse_dialog(skinned_response)
 
-            interlocutor_status = f"presence.{interlocutor.lower()}" if interlocutor else ""
+        interlocutor_status = f"presence.{interlocutor.lower()}" if interlocutor else ""
         
-        with open(f"{speech_path}/{speech}", "r") as json_file:
+        with open(f"{speech_path}/{speech}.json", "r") as json_file:
             choices = json.load(json_file)
         
         if choices:
