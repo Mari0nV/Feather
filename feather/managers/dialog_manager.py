@@ -24,11 +24,8 @@ class DialogManager(InputManager):
         self._cache[clean_response] = parsing
     
     def detect_dialog(self, response):
-        # check spelling and decompose response
-        text, tags = self._preprocess_response(response)
-
-        # remove subject, possessive, pronouns...
-        clean_response = self._skin_response(text, tags)
+        # check spelling and replace or remove words
+        clean_response = self._clean_response(response)
 
         parsing = choose_best_decomposition(clean_response, self.dialog_combinations)
 
