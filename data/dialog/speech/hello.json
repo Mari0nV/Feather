@@ -2,6 +2,9 @@
     "hello": {
         "presence.spirit": {
             "msg": ["It triggers no reaction from the spirit."]
+        },
+        "default": {
+            "msg": ["Nobody answers you."]
         }
     },
     "combinations": [
