@@ -17,5 +17,10 @@ setuptools.setup(
     install_requires=[
         "nltk==3.5",
         "autocorrect==2.1.0"
+        ],
+    entry_points={
+        "console_scripts": [
+            "build_data=feather.generators.build_data:build_data"
         ]
+    }
 )

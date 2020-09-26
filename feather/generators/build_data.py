@@ -3,10 +3,6 @@ import json
 import re
 import os
 
-import nltk
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
-
 
 def build_dictionary(json_files, filename):
     dictionary = {}
@@ -52,7 +48,7 @@ def build_replacements(json_file, filename):
         json.dump(repl, fd)
 
 
-if __name__ == "__main__":
+def build_data():
     if not os.path.exists("data/generated"):
          os.mkdir("data/generated")
 
