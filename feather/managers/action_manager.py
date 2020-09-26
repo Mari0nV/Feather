@@ -14,8 +14,7 @@ class ActionManager(InputManager):
             self.action_dictionary = json.load(json_file)
 
         self.status_manager = status_manager
-        self.output_manager = output_manager
-        InputManager.__init__(self)
+        InputManager.__init__(self, output_manager)
 
     def _choose_action_from_status(self, data, key):
         # check status and return action
@@ -26,10 +25,10 @@ class ActionManager(InputManager):
         if not status or status == "default":
             return action
 
-    def retrieve_action(self, skinned_response):
+    def _retrieve_action(self, clean_response):
         # check if response is in dictionary
-        if skinned_response in self.action_dictionary:
-            key = self.action_dictionary[skinned_response]
+        if clean_response in self.action_dictionary:
+            key = self.action_dictionary[clean_response]
 
             with open(f"{action_path}/{key}.json", "r") as fp:
                 data = json.load(fp)

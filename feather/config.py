@@ -28,4 +28,9 @@ speech_path = os.environ.get(
     "FEATHER_SPEECH_PATH", "data/dialog/speech")
 
 action_path = os.environ.get(
-    "FEATHER_SPEECH_PATH", "data/action")
+    "FEATHER_ACTION_PATH", "data/action")
+
+# Introduction
+intro_file = os.environ.get(
+    "FEATHER_INTRO_FILE", "data/intro.json"
+)
