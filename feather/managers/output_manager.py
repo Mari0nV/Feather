@@ -3,7 +3,8 @@ class OutputManager:
         self.history = []
 
     def print(self, text):
-        self.history[-1]["outputs"].append(text)
+        if self.history:
+            self.history[-1]["outputs"].append(text)
         print("\n", text)
     
     def save_input(self, text):
