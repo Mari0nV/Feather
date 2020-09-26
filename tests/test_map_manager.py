@@ -34,6 +34,7 @@ def test_that_map_manager_list_all_places():
     assert map_manager.list_places() == [
         "forest",
         "middle_forest",
+        "west_forest",
         "city",
         "city_center"
     ]

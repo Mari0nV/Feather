@@ -2,7 +2,8 @@ import pytest
 
 from feather.utils.utils import (
     choose_best_decomposition,
-    decompose_text
+    decompose_text,
+    remove_punctuation
 )
 
 
@@ -77,3 +78,9 @@ def test_that_best_decomposition_is_choosen(
     text, texts, expected
         ):
     assert choose_best_decomposition(text, texts) == expected
+
+
+def test_that_punctuation_is_removed_from_text():
+    text = "?hello, my! \"dear\" friend;."
+
+    assert remove_punctuation(text) == "hello my dear friend"

@@ -1,0 +1,7 @@
+{
+    "fake_action": {
+        "default": {
+            "msg": ["msg output"]
+        }
+    }
+}
