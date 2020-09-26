@@ -1,3 +1,4 @@
+import nltk
 import os
 import pytest
 
@@ -11,6 +12,9 @@ from feather.managers.dialog_manager import DialogManager
 from feather.managers.map_manager import MapManager
 from feather.managers.status_manager import StatusManager
 
+
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 
 
 class FakeOutputManager:
