@@ -59,6 +59,6 @@ def choose_best_decomposition(text, texts):
 
 
 def remove_punctuation(text):
-    punctuation = ["\"", ".", "?", "!"]
+    punctuation = ["\"", ".", "?", "!", ";", ","]
 
-    return text.strip("".join(punctuation))
+    return re.sub(f"[{''.join(punctuation)}]", "", text)
