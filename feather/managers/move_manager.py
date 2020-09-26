@@ -18,26 +18,26 @@ class MoveManager(ActionManager):
         text, tags = self._preprocess_response(response)
 
         # remove subject, possessive, pronouns...
-        skinned_response = self._skin_response(text, tags)
+        clean_response = self._skin_response(text, tags)
 
-        if skinned_response not in self.action_dictionary:
+        if clean_response not in self.action_dictionary:
             for key in self.move_dictionary:
-                if skinned_response.startswith(key):
-                    self._cache[skinned_response] = key
+                if clean_response.startswith(key):
+                    self._cache[clean_response] = key
                     return True
 
         return False
 
-    def _parse_destination(self, skinned_response):
-        if skinned_response in self._cache:
-            destination = skinned_response.replace(
-                self._cache[skinned_response], ""
+    def _parse_destination(self, clean_response):
+        if clean_response in self._cache:
+            destination = clean_response.replace(
+                self._cache[clean_response], ""
             ).strip()
         else:
             for key in self.move_dictionary:
-                if skinned_response.startswith(key):
-                    destination = skinned_response.replace(
-                        self._cache[skinned_response], ""
+                if clean_response.startswith(key):
+                    destination = clean_response.replace(
+                        self._cache[clean_response], ""
                     ).strip()
 
         if destination in self.map_manager.list_places():
@@ -46,8 +46,8 @@ class MoveManager(ActionManager):
             current_place = self.status_manager.get_current_place()
             return self.map_manager.next_place(current_place, destination)
 
-    def retrieve_action(self, skinned_response):
-        destination = self._parse_destination(skinned_response)
+    def retrieve_action(self, clean_response):
+        destination = self._parse_destination(clean_response)
 
         if destination:
             with open(f"data/move/places/{destination}.json", "r") as fp:
