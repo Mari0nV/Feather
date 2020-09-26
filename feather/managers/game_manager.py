@@ -1,5 +1,6 @@
 import json
 
+from feather.config import intro_file
 from feather.managers.action_manager import ActionManager
 from feather.managers.dialog_manager import DialogManager
 from feather.managers.map_manager import MapManager
@@ -21,7 +22,7 @@ class GameManager:
         )
 
     def intro(self):
-        with open("data/intro.json", "r") as fp:
+        with open(intro_file, "r") as fp:
             intro = json.load(fp)["intro"]
         self.output_manager.print(intro)
 
