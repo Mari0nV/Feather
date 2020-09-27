@@ -1,5 +1,5 @@
 {
-    "sleep": {
+    "results": {
         "mental_state.tired, !place.cemetery, place.forest": {
             "msg": ["You're so tired... You spot a somewhat-comfy pack of leaves and take a nap. When you wake up, it's still dark."],
             "update": {"mental_state.tired": false}

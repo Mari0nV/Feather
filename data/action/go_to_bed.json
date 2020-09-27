@@ -1,5 +1,5 @@
 {
-    "go_to_bed": {
+    "results": {
         "!environment.bed": {
             "msg": ["You bed is far away..."]
         },

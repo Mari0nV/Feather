@@ -1,6 +1,6 @@
 {
-    "river": {
-        "!place.river, !information.river, active.gps)": {
+    "results": {
+        "!place.river, !information.river, active.gps": {
             "msg": ["You walk into the forest, not so eager to return home. Half an hour later, you arrive on the side of a turbulent river. The water flows dangerously above big rounded rocks."],
             "update": {"place.river": true}
         },

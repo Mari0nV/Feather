@@ -1,5 +1,5 @@
 {
-    "go_back": {
+    "results": {
         "previous_place.cemetery": {
             "msg": ["You go back to the cemetery."],
             "update": {"place.cemetery": true}

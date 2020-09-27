@@ -57,4 +57,4 @@ class MoveManager(ActionManager):
                 data = json.load(fp)
 
             if data:
-                return self._choose_action_from_status(data, destination)
+                return self._choose_action_from_status(data)

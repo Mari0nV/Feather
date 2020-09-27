@@ -1,5 +1,5 @@
 {
-    "climb_tree": {
+    "results": {
         "!place.cemetery, place.forest": {
             "msg": ["You approach the closest tree and try to climb it. However you have no climbing skills, and you fall ridiculously on the ground."],
             "update": {"physical_state.laying": true}
@@ -10,8 +10,8 @@
     },
     "combinations": [
             {
-            "part1": ["climb", "scale"],
-            "part2": ["tree"]
+                "part1": ["climb", "scale"],
+                "part2": ["tree"]
             }
         ]
 }

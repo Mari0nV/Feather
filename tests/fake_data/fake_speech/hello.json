@@ -1,5 +1,5 @@
 {
-    "hello": {
+    "results": {
         "presence.wendy": {
             "msg": ["hello, says Wendy."]
         }

@@ -1,5 +1,5 @@
 {
-    "put_phone_in_pocket": {
+    "results": {
         "active.phone": {
             "msg": ["You put your phone in your pocket."],
             "update": {"active.phone": false}

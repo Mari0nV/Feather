@@ -1,5 +1,5 @@
 {
-    "west_forest": {
+    "results": {
         "place.forest, !place.west_forest, active.gps, !information.west_forest": {
             "msg": ["You walk towards the west, unsure of what you'll find. The answer is... nothing. The forest seems to never end. Two hours later, you feel thirsty and hungry."],
             "update": {"physical_state.thirsty": true, "physical_state.hungry": true, "place.west_forest": true}

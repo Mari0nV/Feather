@@ -1,5 +1,5 @@
 {
-    "use_phone_flashlight": {
+    "results": {
         "active.phone, environment.dark": {
             "msg": ["You open your phone light application. Finally, you're able to see what's in front of you! "],
             "update": {"environment.dark": false},

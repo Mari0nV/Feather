@@ -16,9 +16,9 @@ class ActionManager(InputManager):
         self.status_manager = status_manager
         InputManager.__init__(self, output_manager)
 
-    def _choose_action_from_status(self, data, key):
+    def _choose_action_from_status(self, data):
         # check status and return action
-        for status, action in data[key].items():
+        for status, action in data["results"].items():
             if status and status != "default":
                 if self.status_manager.check_status(status):
                     return action
@@ -34,4 +34,4 @@ class ActionManager(InputManager):
                 data = json.load(fp)
 
             if data:
-                return self._choose_action_from_status(data, key)
+                return self._choose_action_from_status(data)

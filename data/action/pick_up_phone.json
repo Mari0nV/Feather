@@ -1,5 +1,5 @@
 {
-    "pick_up_phone": {
+    "results": {
         "active.phone": {
             "msg": ["You already have your phone in your hands."]
         },

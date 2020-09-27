@@ -1,5 +1,5 @@
 {
-    "university": {
+    "results": {
         "!active.gps, !information.university": {
             "msg": ["You wish you could, but you have no idea which direction to go."]
         },
