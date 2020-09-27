@@ -49,14 +49,22 @@ def test_that_dialog_manager_parses_dialog(
     assert dialog_manager._parse_dialog(response) == expected
 
 
-@pytest.mark.parametrize("cache", [
-    {},
-    {"say hello to Wendy": {"interlocutor": "Wendy", "speech": "hello"}}
+@pytest.mark.parametrize("speech, presence, cache, expected", [
+    ["say hello to Wendy", True, {}, "hello, says Wendy."],
+    ["say hello to Wendy", True, 
+        {"say hello to Wendy": {"interlocutor": "Wendy", "speech": "hello"}},
+        "hello, says Wendy."],
+    ["say hello", True, {}, "hello, says Wendy."],
+    ["say hello", False, {}, "nobody answers you."],
+    ["say hello", True, 
+        {"say hello": {"speech": "hello"}},
+        "hello, says Wendy."],
 ])
-def test_that_dialog_manager_retrieves_action(dialog_manager, cache):
-    dialog_manager.status_manager["presence"]["wendy"] = True
+def test_that_dialog_manager_retrieves_action(
+    dialog_manager, speech, presence, cache, expected):
+    dialog_manager.status_manager["presence"]["wendy"] = presence
     dialog_manager._cache = cache
 
     assert dialog_manager._retrieve_action(
-        "say hello to Wendy"
-    )["msg"][0] == "hello, says Wendy."
+        speech
+    )["msg"][0] == expected

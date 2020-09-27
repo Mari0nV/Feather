@@ -1,3 +1,5 @@
+import pytest
+
 from feather.managers.game_manager import GameManager
 
 
@@ -10,14 +12,18 @@ def test_that_game_manager_outputs_intro():
     ]
 
 
-def test_that_game_manager_process_response():
+@pytest.mark.parametrize("user_input, history", [
+    ["input action", {"input": "input action", "outputs": ["msg output"]}],
+    ["say hello", {"input": "say hello", "outputs": ["nobody answers you."]}]
+])
+def test_that_game_manager_process_response(
+    user_input, history
+):
     game_manager = GameManager()
 
-    game_manager.process_response("input action")
+    game_manager.process_response(user_input)
 
-    assert game_manager.output_manager.history == [
-        {"input": "input action", "outputs": ["msg output"]}
-    ]
+    assert game_manager.output_manager.history[0] == history
 
 
 def test_that_game_manager_starts_and_quits_game(mocker):

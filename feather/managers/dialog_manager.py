@@ -54,7 +54,8 @@ class DialogManager(InputManager):
 
     def _retrieve_action(self, clean_response):
         if clean_response in self._cache:
-            interlocutor = self._cache[clean_response]["interlocutor"]
+            interlocutor = self._cache[clean_response]["interlocutor"] \
+                if "interlocutor" in self._cache[clean_response] else None
             speech = self._cache[clean_response]["speech"]
         else:
             interlocutor, speech = self._parse_dialog(clean_response)
