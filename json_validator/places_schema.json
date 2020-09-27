@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "results": {
+            "type": "object",
+            "patternProperties": {
+                "(^[!]?[a-z_]+(\\.[a-z0-9_]+)+(,[ ]?[!]?[a-z_]+(\\.[a-z0-9_]+)+)*$)|(default)": {
+                    "type": "object",
+                    "properties": {
+                        "msg": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "update": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^[a-z_]+\\.[a-z0-9_]+$": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "next": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["msg"],
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "required": ["results"],
+    "additionalProperties": false
+}

@@ -12,7 +12,7 @@ def test_that_dialog_manager_detects_dialog(dialog_manager, input, expected):
     assert dialog_manager.detect_dialog(input) == expected
 
 
-choices = { "key": {
+choices = { "results": {
         "place.middle_forest, presence.friend": {
             "msg": ["place.middle_forest, presence.friend"]
         },
@@ -36,7 +36,7 @@ def test_dialog_managers_chooses_action_from_status(
 
     dialog_manager.status_manager.status["presence"]["friend"] = friend_presence
     assert dialog_manager._choose_action_from_status(
-        choices, "key", interlocutor_status)["msg"][0] == expected
+        choices, interlocutor_status)["msg"][0] == expected
 
 
 @pytest.mark.parametrize("response, expected", [

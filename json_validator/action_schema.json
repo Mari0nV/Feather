@@ -1,0 +1,60 @@
+{
+    "type": "object",
+    "properties": {
+        "combinations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "patternProperties": {
+                    "^part1$": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "^part[0-9]+$": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": ["part1"],
+                "additionalProperties": false
+            }
+        },
+        "results": {
+            "type": "object",
+            "patternProperties": {
+                "(^[!]?[a-z_]+(\\.[a-z0-9_]+)+(,[ ]?[!]?[a-z_]+(\\.[a-z0-9_]+)+)*$)|(default)": {
+                    "type": "object",
+                    "properties": {
+                        "msg": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "update": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^[a-z_]+\\.[a-z0-9_]+$": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "next": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["msg"],
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "required": ["combinations", "results"],
+    "additionalProperties": false
+}

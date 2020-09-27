@@ -1,5 +1,5 @@
 {
-    "swim_in_river": {
+    "results": {
         "!place.river": {
             "msg": ["There is no water to swim into."]
         },

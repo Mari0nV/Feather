@@ -1,5 +1,5 @@
 {
-    "fake_action": {
+    "results": {
         "default": {
             "msg": ["msg output"]
         }

@@ -1,5 +1,5 @@
 {
-    "use_phone_gps": {
+    "results": {
         "active.phone, active.gps": {
             "msg": ["Where do you want to go?"]
         },

@@ -43,9 +43,9 @@ class DialogManager(InputManager):
 
         return interlocutor, speech
 
-    def _choose_action_from_status(self, choices, key, interlocutor_status):
+    def _choose_action_from_status(self, choices, interlocutor_status):
         # check status and return action
-        for status, action in choices[key].items():
+        for status, action in choices["results"].items():
             if status and status != "default":
                 if interlocutor_status in status and self.status_manager.check_status(status):
                     return action
@@ -65,4 +65,4 @@ class DialogManager(InputManager):
             choices = json.load(json_file)
         
         if choices:
-            return self._choose_action_from_status(choices, speech, interlocutor_status)
+            return self._choose_action_from_status(choices, interlocutor_status)
