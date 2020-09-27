@@ -34,6 +34,6 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-    - name: Data validation
+    - name: Data validation with jsonschema
       run: |
         python json_validator/validate_json.py
