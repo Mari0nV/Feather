@@ -29,7 +29,7 @@ def build_combinations(json_file, filename):
     for group in combinations:
         for combination in itertools.product(*group.values()):
             word = re.sub(" +", " ", " ".join(combination))
-            all_combinations.append(word)
+            all_combinations.append(word.strip())
 
     with open(f"data/generated/{filename}.json", "w+") as fd:
         json.dump({"combinations": all_combinations}, fd)

@@ -59,6 +59,8 @@ def test_that_dialog_manager_parses_dialog(
     ["say hello", True, 
         {"say hello": {"speech": "hello"}},
         "hello, says Wendy."],
+    ["say hello to Bob", True, {},
+        "nobody answers you."],
 ])
 def test_that_dialog_manager_retrieves_action(
     dialog_manager, speech, presence, cache, expected):
