@@ -2,6 +2,9 @@
     "results": {
         "presence.wendy": {
             "msg": ["hello, says Wendy."]
+        },
+        "default": {
+            "msg": ["nobody answers you."]
         }
     }
 }
