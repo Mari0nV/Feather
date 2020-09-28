@@ -1,0 +1,9 @@
+{
+    "presence": {
+        "DAY1_afternoon": ["Mary"],
+        "DAY2_night": ["Bob"]
+    },
+    "objects": {
+        "DAY1-DAY4": ["Love letter"]
+    }
+}
