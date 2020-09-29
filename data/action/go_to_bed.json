@@ -9,7 +9,7 @@
         },
         "environment.bed": {
             "msg": ["You decide to sleep for a while in your bed. It's so comfy! You could stay here all the time."],
-            "update": {"mental_state.tired": false}
+            "update": {"mental_state.tired": false, "duration": 0.5}
         }
     },
     "combinations": [

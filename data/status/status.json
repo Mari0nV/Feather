@@ -1,4 +1,5 @@
 {
+    "zone": "forest",
     "place": "middle_forest",
     "environment": {
         "dark": true
@@ -13,6 +14,7 @@
     "active": {},
     "presence": {},
     "information": {},
+    "skills": {},
     "inventory": [
         "phone"
     ],

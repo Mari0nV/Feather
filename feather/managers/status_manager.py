@@ -18,18 +18,20 @@ class StatusManager:
 
     def update(self, status_dict: dict):
         for status, value in status_dict.items():
-            category, status = status.split(".")
+            category, *status = status.split(":")
             if category == "place" and value:
                 self.status["previous_place"] = self.status["place"]
-                self.status["place"] = status
+                self.status["place"] = status[0]
+            elif category == "duration":
+                self.status["day"] += value
             else:
-                self.status[category][status] = value
+                self.status[category][status[0]] = value
 
     def check_status(self, status: str):
         for elt in status.split(","):
             elt = elt.strip()
             if elt[0] == "!":
-                category, status_name, *level = elt[1:].split(".")
+                category, status_name, *level = elt[1:].split(":")
                 if category == "place" and self.status["place"] == status_name:
                     return False
                 elif (
@@ -38,12 +40,9 @@ class StatusManager:
                 ):
                     return False
             else:
-                category, status_name, *level = elt.split(".")
+                category, status_name, *level = elt.split(":")
                 if category == "place" and self.status["place"] != status_name:
-                    if not self.map_manager.is_subplace(
-                        self.status["place"], status_name
-                    ):
-                        return False
+                    return False
                 elif status_name not in self.status[category]:
                     return False
                 elif (

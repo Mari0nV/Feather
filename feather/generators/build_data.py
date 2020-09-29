@@ -3,7 +3,7 @@ import json
 import re
 import os
 
-from feather.config import map_file
+from feather.config import map_path
 from feather.generators.build_map import build_map_paths
 
 
@@ -88,4 +88,4 @@ def build_data():
     build_replacements(replacement_path, "replacements")
 
     # Building map paths and directions
-    build_map_paths(map_file, "map_paths")
+    build_map_paths(f"{map_path}/world_map.json", "map_paths")

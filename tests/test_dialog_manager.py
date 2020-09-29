@@ -13,11 +13,11 @@ def test_that_dialog_manager_detects_dialog(dialog_manager, input, expected):
 
 
 choices = { "results": {
-        "place.middle_forest, presence.friend": {
-            "msg": ["place.middle_forest, presence.friend"]
+        "place:forest.middle_forest, presence:friend": {
+            "msg": ["place:forest.middle_forest, presence:friend"]
         },
-        "presence.other_friend": {
-            "msg": ["presence.other_friend"]
+        "presence:other_friend": {
+            "msg": ["presence:other_friend"]
         },
         "default": {
             "msg": ["default"]
@@ -26,9 +26,9 @@ choices = { "results": {
 
 
 @pytest.mark.parametrize("interlocutor_status, friend_presence, expected", [
-    ["presence.friend", True, "place.middle_forest, presence.friend"],
-    ["", True, "place.middle_forest, presence.friend"],
-    ["presence.friend", False, "default"],
+    ["presence:friend", True, "place:forest.middle_forest, presence:friend"],
+    ["", True, "place:forest.middle_forest, presence:friend"],
+    ["presence:friend", False, "default"],
     ["", False, "default"],
 ])
 def test_dialog_managers_chooses_action_from_status(

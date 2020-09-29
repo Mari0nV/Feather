@@ -6,7 +6,7 @@ status_file = os.environ.get(
 
 # Map
 map_file = os.environ.get(
-    "FEATHER_MAP_FILE", "data/map/map.json")
+    "FEATHER_MAP_FILE", "data/generated/map_paths.json")
 
 # Dictionaries
 action_dictionary_file = os.environ.get(
@@ -32,6 +32,9 @@ action_path = os.environ.get(
 
 places_path = os.environ.get(
     "FEATHER_PLACES_PATH", "data/move/places")
+
+map_path = os.environ.get(
+    "FEATHER_MAP_PATH", "data/map")
 
 # Introduction
 intro_file = os.environ.get(

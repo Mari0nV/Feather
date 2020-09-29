@@ -8,32 +8,14 @@ class MapManager:
         with open(map_file) as fp:
             self.map = json.load(fp)
 
+    def alias_to_path(self, alias):
+        for place_path, data in self.map.items():
+            if alias in data["aliases"]:
+                return place_path
+
     def next_place(self, place, direction):
-        for _, zone in self.map.items():
-            if place in zone and direction in zone[place]:
-                return zone[place][direction]
+        if direction in self.map[place]["directions"]:
+            return self.map[place]["directions"][direction]
 
-    def is_subplace(self, place, zone):
-        if zone in self.map:
-            if place in self.map[zone]:
-                return True
-
-        return False
-
-    def list_places(self):
-        places = []
-        for zone_name, zone in self.map.items():
-            places.append(zone_name)
-            for place in zone:
-                places.append(place)
-
-        return places
-
-    def list_directions(self):
-        all_directions = set()
-        for _, zone in self.map.items():
-            for place, directions in zone.items():
-                for direction in directions:
-                    all_directions.add(direction)
-
-        return all_directions
+    def compute_distance(self, place, destination):
+        pass

@@ -60,7 +60,7 @@ class DialogManager(InputManager):
         else:
             interlocutor, speech = self._parse_dialog(clean_response)
 
-        interlocutor_status = f"presence.{interlocutor.lower()}" if interlocutor else ""
+        interlocutor_status = f"presence:{interlocutor.lower()}" if interlocutor else ""
         
         with open(f"{speech_path}/{speech}.json", "r") as json_file:
             choices = json.load(json_file)

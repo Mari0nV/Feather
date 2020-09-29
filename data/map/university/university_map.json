@@ -14,5 +14,9 @@
         "fraternity": {
                 "east": "forest.west_river"
             }
-        }
+    },
+    "aliases": {
+        "dorms": ["dorms", "dormitories"],
+        "gymnasium": ["gymnasium", "gym"]
+    }
 }
