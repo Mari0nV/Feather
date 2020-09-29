@@ -2,16 +2,16 @@ import nltk
 import os
 import pytest
 
-os.environ["FEATHER_INTRO_FILE"] = "tests/fake_data/fake_intro.json"
-os.environ["FEATHER_STATUS_FILE"] = "tests/fake_data/fake_status.json"
-os.environ["FEATHER_MAP_FILE"] = "tests/fake_data/fake_map.json"
-os.environ["FEATHER_ACTION_DICTIONARY_FILE"] = "tests/fake_data/fake_action_dictionary.json"
-os.environ["FEATHER_SPEECH_PATH"] = "tests/fake_data/fake_speech"
-os.environ["FEATHER_ACTION_PATH"] = "tests/fake_data/fake_action"
-os.environ["FEATHER_PLACES_PATH"] = "tests/fake_data/fake_move"
-os.environ["FEATHER_MOVE_COMBINATIONS_FILE"] = "tests/fake_data/fake_move_combinations.json"
-os.environ["FEATHER_DIALOG_COMBINATIONS_FILE"] = "tests/fake_data/fake_dialog_combinations.json"
-os.environ["FEATHER_REPLACEMENTS_FILE"] = "tests/fake_data/fake_replacements.json"
+os.environ["FEATHER_INTRO_FILE"] = "tests/mock_data/intro.json"
+os.environ["FEATHER_STATUS_FILE"] = "tests/mock_data/status.json"
+os.environ["FEATHER_MAP_FILE"] = "tests/mock_data/map.json"
+os.environ["FEATHER_ACTION_DICTIONARY_FILE"] = "tests/mock_data/action_dictionary.json"
+os.environ["FEATHER_SPEECH_PATH"] = "tests/mock_data/speech"
+os.environ["FEATHER_ACTION_PATH"] = "tests/mock_data/action"
+os.environ["FEATHER_PLACES_PATH"] = "tests/mock_data/move"
+os.environ["FEATHER_MOVE_COMBINATIONS_FILE"] = "tests/mock_data/move_combinations.json"
+os.environ["FEATHER_DIALOG_COMBINATIONS_FILE"] = "tests/mock_data/dialog_combinations.json"
+os.environ["FEATHER_REPLACEMENTS_FILE"] = "tests/mock_data/replacements.json"
 
 from feather.managers.action_manager import ActionManager
 from feather.managers.dialog_manager import DialogManager
