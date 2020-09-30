@@ -1,12 +1,12 @@
 {
     "results": {
-        "place.cemetery, !environment.dark": {
+        "place:forest.cemetery, !environment:dark": {
             "msg": ["Old and damaged tombs surround you. The ground looks like someone - or something - tried to dig up every inch of the cemetery. It's odd, right?"]
         },
-        "place.middle_forest, !environment.dark": {
+        "place:forest.middle_forest, !environment:dark": {
             "msg": ["Trees are the only thing you can see. Their trunks are all cluttered and gigantic."]
         },
-        "environment.dark": {
+        "environment:dark": {
             "msg": ["It would be easier with some light."]
         }
     },

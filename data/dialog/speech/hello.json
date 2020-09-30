@@ -1,6 +1,6 @@
 {
     "results": {
-        "presence.spirit": {
+        "presence:spirit": {
             "msg": ["It triggers no reaction from the spirit."]
         },
         "default": {

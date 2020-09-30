@@ -1,9 +1,9 @@
 {
     "results": {
-        "!place.river": {
+        "!place:forest.river": {
             "msg": ["There is no water to swim into."]
         },
-        "place.river": {
+        "place:forest.river": {
             "msg": ["You remove your clothes and approach the river. The water is cold, but the adrenaline gives you courage. You go in and enjoy the water flowing on your body. Unfortunately, the flow is too strong and makes you slip on a rock. You're torned up and die quite painfully."],
             "next": "accidental_death"
         }

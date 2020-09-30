@@ -1,18 +1,18 @@
 {
     "results": {
-        "place.forest, !place.west_forest, active.gps, !information.west_forest": {
+        "place:forest, !place:forest.west_forest, active:gps, !information:forest.west_forest": {
             "msg": ["You walk towards the west, unsure of what you'll find. The answer is... nothing. The forest seems to never end. Two hours later, you feel thirsty and hungry."],
-            "update": {"physical_state.thirsty": true, "physical_state.hungry": true, "place.west_forest": true}
+            "update": {"physical_state:thirsty": true, "physical_state:hungry": true, "place:forest.west_forest": true}
         },
-        "place.forest, place.west_forest, active.gps, physical_state.thirsty, !physical_state.dying": {
+        "place:forest, place:forest.west_forest, active:gps, physical_state:thirsty, !physical_state:dying": {
             "msg": ["You're so thirsty... You continue to walk towards the west, but you feel weaker and weaker."],
             "update": {"physical_state.dying": true}
         },
-        "place.west_forest, active.gps, physical_state.dying": {
+        "place:forest.west_forest, active:gps, physical_state:dying": {
             "msg": ["You're beyong exhausted. You continue to walk, hoping to find an exit from this dreadful forest. A few minutes later, you faint. Unfortunately, nobody finds you, and you just die unconsciously."],
             "next": "accidental_death"
         },
-        "!active.gps": {
+        "!active:gps": {
             "msg": ["You have no idea where the east is."]
         }
     }

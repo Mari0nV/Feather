@@ -1,15 +1,15 @@
 {
     "results": {
-        "!environment.bed": {
+        "!environment:bed": {
             "msg": ["You bed is far away..."]
         },
-        "environment.bed, !mental_state.tired": {
+        "environment:bed, !mental_state:tired": {
             "msg": ["You lay in your bed, but are not tired enough to sleep."],
-            "update": {"physical_state.laying": true}
+            "update": {"physical_state:laying": true}
         },
-        "environment.bed": {
+        "environment:bed": {
             "msg": ["You decide to sleep for a while in your bed. It's so comfy! You could stay here all the time."],
-            "update": {"mental_state.tired": false, "duration": 0.5}
+            "update": {"mental_state:tired": false, "duration": 0.5}
         }
     },
     "combinations": [

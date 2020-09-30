@@ -1,8 +1,8 @@
 {
     "results": {
-        "physical_state.laying": {
+        "physical_state:laying": {
             "msg": ["You get up and remove the leafs hung up on your clothes. Man you're dirty. You better go back quicky to your dorm room to clean up."],
-            "update": {"physical_state.laying": false}
+            "update": {"physical_state:laying": false}
             },
         "default": {
             "msg": ["You are already standing up."]
