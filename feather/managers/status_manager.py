@@ -26,11 +26,11 @@ class StatusManager:
                 self.status["day"] += value
             else:
                 self.status[category][status[0]] = value
-    
+
     def _is_in_place(self, place):
         if self.status["place"].startswith(place):
             return True
-        
+
         return False
 
     def check_status(self, status: str):

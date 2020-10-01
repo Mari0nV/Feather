@@ -1,7 +1,7 @@
 import json
 
 from feather.config import (
-    move_combinations_file,
+    generated_move_combinations_file,
     places_path
 )
 from feather.managers.action_manager import ActionManager
@@ -9,7 +9,7 @@ from feather.managers.action_manager import ActionManager
 
 class MoveManager(ActionManager):
     def __init__(self, status_manager, output_manager):
-        with open(move_combinations_file, "r") as fp:
+        with open(generated_move_combinations_file, "r") as fp:
             self.move_combinations = json.load(fp)["combinations"]
 
         self.map_manager = status_manager.map_manager
@@ -24,10 +24,10 @@ class MoveManager(ActionManager):
         self._look_for_key(clean_response)
 
         if clean_response in self._cache:
-            return True        
+            return True
 
         return False
-    
+
     def _look_for_key(self, clean_response):
         if clean_response not in self.action_dictionary:
             for key in self.move_combinations:

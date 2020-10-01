@@ -4,13 +4,13 @@ import nltk
 import random
 from autocorrect import Speller
 
-from feather.config import replacements_file
+from feather.config import generated_replacements_file
 from feather.utils.utils import remove_punctuation
 
 
 class InputManager(ABC):
     def __init__(self, output_manager):
-        with open(replacements_file) as json_file:
+        with open(generated_replacements_file) as json_file:
             self.replacements = json.load(json_file)
 
         self.speller = Speller()

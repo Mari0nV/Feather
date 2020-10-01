@@ -1,6 +1,12 @@
 import json
 import os
 
+from feather.config import (
+    generated_map_aliases_file,
+    generated_map_file,
+    map_world_file
+)
+
 
 def _compute_directions(json_file, place, coordinates):
     with open(json_file, "r") as fp:
@@ -64,13 +70,13 @@ def _build_map_path(map_paths, map_dictionary, file_path, parent=None):
                     map_dictionary.setdefault(alias, []).append(new_parent)
 
 
-def build_map_data(json_file, map_paths, map_dictionary):
+def build_map_data():
     paths = {}
     dictionary = {}
-    _build_map_path(paths, dictionary, json_file)
+    _build_map_path(paths, dictionary, map_world_file)
 
-    with open(f"data/generated/{map_paths}.json", "w+") as fd:
+    with open(generated_map_file, "w+") as fd:
         json.dump(paths, fd)
 
-    with open(f"data/generated/{map_dictionary}.json", "w+") as fd:
+    with open(generated_map_aliases_file, "w+") as fd:
         json.dump(dictionary, fd)

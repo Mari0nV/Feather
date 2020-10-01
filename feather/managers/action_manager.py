@@ -1,8 +1,7 @@
 import json
-import random
 
 from feather.config import (
-    action_dictionary_file,
+    generated_action_file,
     action_path
     )
 from feather.managers.input_manager import InputManager
@@ -10,7 +9,7 @@ from feather.managers.input_manager import InputManager
 
 class ActionManager(InputManager):
     def __init__(self, status_manager, output_manager):
-        with open(action_dictionary_file) as json_file:
+        with open(generated_action_file) as json_file:
             self.action_dictionary = json.load(json_file)
 
         self.status_manager = status_manager
