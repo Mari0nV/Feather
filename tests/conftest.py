@@ -4,7 +4,10 @@ import pytest
 
 os.environ["FEATHER_INTRO_FILE"] = "tests/mock_data/intro.json"
 os.environ["FEATHER_STATUS_FILE"] = "tests/mock_data/status.json"
+
 os.environ["FEATHER_MAP_FILE"] = "tests/mock_data/map.json"
+os.environ["FEATHER_MAP_DICTIONARY_FILE"] = "tests/mock_data/map_dictionary.json"
+
 os.environ["FEATHER_ACTION_DICTIONARY_FILE"] = "tests/mock_data/action_dictionary.json"
 os.environ["FEATHER_SPEECH_PATH"] = "tests/mock_data/speech"
 os.environ["FEATHER_ACTION_PATH"] = "tests/mock_data/action"

@@ -86,3 +86,19 @@ def test_that_status_manager_acts_like_status_list():
 
     assert len(status_manager) == len(status_manager.status)
     assert status_manager["place"] == status_manager.status["place"]
+
+
+@pytest.mark.parametrize("place, status, expected", [
+    ["forest", "forest", True],
+    ["forest.cemetery", "forest.cemetery", True],
+    ["forest.cemetery.north", "forest.cemetery", True],
+    ["forest.cemetery", "forest", True],
+    ["forest.cemetery", "forest.river", False],
+])
+def test_that_status_managers_detects_nested_places(
+    place, status, expected
+):
+    status_manager = StatusManager(MapManager())
+    status_manager.status["place"] = place
+
+    assert status_manager._is_in_place(status) == expected
