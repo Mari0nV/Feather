@@ -6,7 +6,7 @@
         },
         "place:forest, place:forest.west_forest, active:gps, physical_state:thirsty, !physical_state:dying": {
             "msg": ["You're so thirsty... You continue to walk towards the west, but you feel weaker and weaker."],
-            "update": {"physical_state.dying": true}
+            "update": {"physical_state:dying": true}
         },
         "place:forest.west_forest, active:gps, physical_state:dying": {
             "msg": ["You're beyong exhausted. You continue to walk, hoping to find an exit from this dreadful forest. A few minutes later, you faint. Unfortunately, nobody finds you, and you just die unconsciously."],

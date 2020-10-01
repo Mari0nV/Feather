@@ -2,7 +2,7 @@
     "results": {
         "!place:forest.cemetery, place:forest": {
             "msg": ["You approach the closest tree and try to climb it. However you have no climbing skills, and you fall ridiculously on the ground."],
-            "update": {"physical_state.laying": true}
+            "update": {"physical_state:laying": true}
         },
         "place:forest.cemetery": {
             "msg": ["There is no tree inside this cemetery."]

@@ -2,7 +2,7 @@
     "results": {
         "!place:forest.cemetery, active:gps, !information:forest.cemetery": {
             "msg": ["You walk a few minutes towards the north and arrive in a dark, tree-less field full of tombs. The atmosphere seems to have changed, isn't it slightly colder than before?"],
-            "update": {"place:cemetery": true}
+            "update": {"place:forest.cemetery": true}
         },
         "!place:forest.cemetery, !active:gps, !information:forest.cemetery": {
             "msg": ["How could you know where it is?"]
