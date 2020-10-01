@@ -1,0 +1,22 @@
+{
+    "map": [
+        ["dorms", "gymnasium", "stadium"],
+        ["science_building", "cafet", "park"],
+        ["sales_building", "english_building", "fraternity"]
+    ],
+    "borders": {
+        "park": {
+               "east": "forest.middle_forest"
+            },
+        "stadium": {
+                "east": "forest.cemetery"
+            },
+        "fraternity": {
+                "east": "forest.west_river"
+            }
+    },
+    "aliases": {
+        "dorms": ["dorms", "dormitories"],
+        "gymnasium": ["gymnasium", "gym"]
+    }
+}

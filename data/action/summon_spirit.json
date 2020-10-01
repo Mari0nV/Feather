@@ -1,10 +1,10 @@
 {
     "results": {
-        "place.cemetery": {
+        "place:forest.cemetery": {
             "msg": ["You're in a cemetery at night... Seems like the perfect time and place to summon a spirit. You improvise and mumble some random gibberish. bjao imaaa gluglu tiiiii, sassowi maaaa... Suddenly, a spirit made of a shimmering light appears in front of you."],
-            "update": {"active.spirit": true, "presence.spirit": true}
+            "update": {"active:spirit": true, "presence:spirit": true}
         },
-        "active.spirit": {
+        "active:spirit": {
             "msg": ["You already summoned a spirit. The Invisible Realm rules state that you can only have one eery companion at a time."]
         },
         "default": {

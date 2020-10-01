@@ -1,11 +1,11 @@
 {
     "results": {
-        "active.phone": {
+        "active:phone": {
             "msg": ["You already have your phone in your hands."]
         },
         "default": {
             "msg": ["You retrieve your phone from your pocket. Surely it can help you in some way."],
-            "update": {"active.phone": true}
+            "update": {"active:phone": true}
         }
     },
     "combinations": [

@@ -1,0 +1,35 @@
+{
+    "forest.middle_forest": {
+        "directions": {
+            "east": "forest.east_forest",
+            "west": "forest.west_forest",
+            "north": "forest.north_forest",
+            "south": "forest.south_forest"
+        },
+        "aliases": ["middle forest"]
+    },
+    "forest.west_forest": {
+        "directions": {
+            "east": "forest.middle_forest"
+        },
+        "aliases": ["west forest"]
+    },
+    "forest": {
+        "directions": {
+            "east": "city"
+        },
+        "aliases": ["forest", "woods"]
+    },
+    "city.city_center": {
+        "directions": {
+            "east": "city.mall"
+        },
+        "aliases": ["city center"]
+    },
+    "city": {
+        "directions": {
+            "west": "forest"
+        },
+        "aliases": ["city", "town"]
+    }
+}

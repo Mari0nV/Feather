@@ -1,6 +1,6 @@
 {
     "results": {
-        "active.spirit": {
+        "active:spirit": {
             "msg": ["You try to touch the spirit but your hand passes through it. You feel a cold sensation in your entire body."]
         },
         "default": {

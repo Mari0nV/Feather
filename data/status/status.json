@@ -1,5 +1,5 @@
 {
-    "place": "middle_forest",
+    "place": "forest.middle_forest",
     "environment": {
         "dark": true
     },
@@ -13,6 +13,7 @@
     "active": {},
     "presence": {},
     "information": {},
+    "skills": {},
     "inventory": [
         "phone"
     ],

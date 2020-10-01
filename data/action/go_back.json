@@ -1,24 +1,24 @@
 {
     "results": {
-        "previous_place.cemetery": {
+        "previous_place:forest.cemetery": {
             "msg": ["You go back to the cemetery."],
-            "update": {"place.cemetery": true}
+            "update": {"place:forest.cemetery": true}
             },
-        "previous_place.middle_forest": {
+        "previous_place:forest.middle_forest": {
             "msg": ["You go back to the place where you woke up."],
-            "update": {"place.middle_forest": true}
+            "update": {"place:forest.middle_forest": true}
             },
-        "previous_place.river": {
+        "previous_place:forest.river": {
             "msg": ["You go back to the river."],
-            "update": {"place.river": true}
+            "update": {"place:forest.river": true}
             },
-        "previous_place.west_forest": {
+        "previous_place:forest.west_forest": {
             "msg": ["You go back to the endless path of trees you were before."],
-            "update": {"place.west_forest": true}
+            "update": {"place:forest.west_forest": true}
             },
-        "previous_place.university_park": {
+        "previous_place:university.university_park": {
             "msg": ["You go back to the university park."],
-            "update": {"place.university_park": true}
+            "update": {"place:university.university_park": true}
             }
     },
     "combinations": [

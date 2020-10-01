@@ -1,13 +1,13 @@
 {
     "results": {
-        "active.phone, environment.dark": {
+        "active:phone, environment:dark": {
             "msg": ["You open your phone light application. Finally, you're able to see what's in front of you! "],
-            "update": {"environment.dark": false},
+            "update": {"environment:dark": false},
             "next": "see surroundings"
         },
-        "!active.phone, environment.dark": {
+        "!active:phone, environment:dark": {
             "msg": ["You retrieve your phone from your pocket and open your flashlight application."],
-            "update": {"environment.dark": false, "active.phone": true}
+            "update": {"environment:dark": false, "active:phone": true}
         },
         "default": {
             "msg": ["You already have the light you need."]

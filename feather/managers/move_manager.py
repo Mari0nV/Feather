@@ -43,17 +43,19 @@ class MoveManager(ActionManager):
                 self._cache[clean_response], ""
             ).strip()
 
-        if destination in self.map_manager.list_places():
-            return destination
-        elif destination in self.map_manager.list_directions():
+        place_path = self.map_manager.alias_to_path(destination)
+        if not place_path:
+            # We make the assumption that destination is a direction
             current_place = self.status_manager.get_current_place()
-            return self.map_manager.next_place(current_place, destination)
+            place_path = self.map_manager.next_place(current_place, destination)
+
+        return place_path
 
     def _retrieve_action(self, clean_response):
         destination = self._parse_destination(clean_response)
 
         if destination:
-            with open(f"{places_path}/{destination}.json", "r") as fp:
+            with open(f"{places_path}/{destination.replace('.', '/')}.json", "r") as fp:
                 data = json.load(fp)
 
             if data:

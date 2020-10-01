@@ -1,8 +1,8 @@
 {
     "results": {
-        "active.phone": {
+        "active:phone": {
             "msg": ["You put your phone in your pocket."],
-            "update": {"active.phone": false}
+            "update": {"active:phone": false}
         },
         "default": {
             "msg": ["You phone is already in your pocket."]

@@ -1,0 +1,8 @@
+{
+    "map": [
+        ["wall", "west_wall"],
+        ["cemetery", "north_west_forest"],
+        ["middle_forest", "west_forest"],
+        ["river", "west_river"]
+    ]
+}

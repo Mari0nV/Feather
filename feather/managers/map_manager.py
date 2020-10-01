@@ -1,39 +1,26 @@
 import json
 
-from feather.config import map_file
-
+from feather.config import (
+    map_dictionary_file,
+    map_file
+)
 
 class MapManager:
     def __init__(self):
         with open(map_file) as fp:
             self.map = json.load(fp)
 
+        with open(map_dictionary_file) as fp:
+            self.map_dictionary = json.load(fp)
+
+    def alias_to_path(self, alias):
+        if alias in self.map_dictionary:
+            # TODO Handle multiple paths for one alias
+            return self.map_dictionary[alias][0]
+
     def next_place(self, place, direction):
-        for _, zone in self.map.items():
-            if place in zone and direction in zone[place]:
-                return zone[place][direction]
+        if direction in self.map[place]["directions"]:
+            return self.map[place]["directions"][direction]
 
-    def is_subplace(self, place, zone):
-        if zone in self.map:
-            if place in self.map[zone]:
-                return True
-
-        return False
-
-    def list_places(self):
-        places = []
-        for zone_name, zone in self.map.items():
-            places.append(zone_name)
-            for place in zone:
-                places.append(place)
-
-        return places
-
-    def list_directions(self):
-        all_directions = set()
-        for _, zone in self.map.items():
-            for place, directions in zone.items():
-                for direction in directions:
-                    all_directions.add(direction)
-
-        return all_directions
+    def compute_distance(self, place, destination):
+        pass

@@ -1,6 +1,6 @@
 {
     "results": {
-        "presence.wendy": {
+        "presence:wendy": {
             "msg": ["hello, says Wendy."]
         },
         "default": {
