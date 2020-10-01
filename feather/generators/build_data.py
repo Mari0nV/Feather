@@ -4,7 +4,7 @@ import re
 import os
 
 from feather.config import map_path
-from feather.generators.build_map import build_map_paths
+from feather.generators.build_map import build_map_data
 
 
 def build_dictionary(json_files, filename):
@@ -87,5 +87,8 @@ def build_data():
     replacement_path = "data/replacements.json"
     build_replacements(replacement_path, "replacements")
 
-    # Building map paths and directions
-    build_map_paths(f"{map_path}/world_map.json", "map_paths")
+    # Building map paths and dictionary
+    build_map_data(
+        f"{map_path}/world_map.json",
+        "map_paths",
+        "map_dictionary")

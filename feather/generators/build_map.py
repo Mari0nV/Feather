@@ -32,13 +32,13 @@ def _compute_directions(json_file, place, coordinates):
                 directions[direction] = f"{place_path}.{destination}"
             else:
                 directions[direction] = destination
-    
+
     # TODO if directions are missing, look to upper map
 
     return directions
 
 
-def _build_map_path(map_paths, file_path, parent=None):
+def _build_map_path(map_paths, map_dictionary, file_path, parent=None):
     with open(file_path, "r") as fp:
         world_map = json.load(fp)
 
@@ -52,18 +52,25 @@ def _build_map_path(map_paths, file_path, parent=None):
 
             if place in subdirs:
                 new_file_path = f"{os.path.dirname(file_path)}/{place}/{place}_map.json"
-                _build_map_path(map_paths, new_file_path, new_parent)
+                _build_map_path(map_paths, map_dictionary, new_file_path, new_parent)
 
             map_paths[new_parent] = {
-                "directions": _compute_directions(file_path, new_parent, (x, y)),
-                "aliases": world_map["aliases"][place]
-                    if "aliases" in world_map and place in world_map["aliases"] else []
+                "directions": _compute_directions(file_path, new_parent, (x, y))
             }
 
+            if "aliases" in world_map and place in world_map["aliases"]:
+                map_paths[new_parent]["aliases"] = world_map["aliases"][place]
+                for alias in world_map["aliases"][place]:
+                    map_dictionary.setdefault(alias, []).append(new_parent)
 
-def build_map_paths(json_file, filename):
-    map_paths = {}
-    _build_map_path(map_paths, json_file)
 
-    with open(f"data/generated/{filename}.json", "w+") as fd:
-        json.dump(map_paths, fd)
+def build_map_data(json_file, map_paths, map_dictionary):
+    paths = {}
+    dictionary = {}
+    _build_map_path(paths, dictionary, json_file)
+
+    with open(f"data/generated/{map_paths}.json", "w+") as fd:
+        json.dump(paths, fd)
+
+    with open(f"data/generated/{map_dictionary}.json", "w+") as fd:
+        json.dump(dictionary, fd)
