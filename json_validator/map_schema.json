@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "map": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "pattern": "^[a-z_][a-z0-9_]*$"
+                }
+            }
+        },
+        "borders": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-z_][a-z0-9_]*$": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^[a-z_][a-z0-9_]*$": {
+                            "type": "string",
+                            "pattern": "^[a-z_]+(\\.[a-z0-9_]+)*$"
+                        }
+                    }
+                }
+              },
+            "additionalProperties": false
+        },
+        "aliases": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-z_][a-z0-9_]*$": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "^[a-z_][a-z0-9_]*$"
+                    }
+                }
+            }
+        },
+        "presence": {
+            "type": "object"
+        },
+        "objects": {
+            "type": "object"
+        }
+    },
+    "additionalProperties": false
+}

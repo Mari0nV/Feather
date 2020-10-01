@@ -4,7 +4,7 @@
         "results": {
             "type": "object",
             "patternProperties": {
-                "(^[!]?[a-z_]+(\\.[a-z0-9_]+)+(,[ ]?[!]?[a-z_]+(\\.[a-z0-9_]+)+)*$)|(default)": {
+                "(^[!]?[a-z_]+(:[a-z0-9_]+(\\.[a-z0-9_]+)*)+(,[ ]?[!]?[a-z_]+(:[a-z0-9_]+(\\.[a-z0-9_]+)*)+)*$)|(default)": {
                     "type": "object",
                     "properties": {
                         "msg": {
@@ -16,7 +16,7 @@
                         "update": {
                             "type": "object",
                             "patternProperties": {
-                                "^[a-z_]+\\.[a-z0-9_]+$": {
+                                "^[a-z_]+(:[a-z0-9_]+(\\.[a-z0-9_]+)*)*$": {
                                     "type": "boolean"
                                 }
                             },
