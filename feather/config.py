@@ -12,6 +12,9 @@ map_file = os.environ.get(
 action_dictionary_file = os.environ.get(
     "FEATHER_ACTION_DICTIONARY_FILE", "data/generated/action_dictionary.json")
 
+map_dictionary_file = os.environ.get(
+    "FEATHER_MAP_DICTIONARY_FILE", "data/generated/map_dictionary.json")
+
 # Combinations
 dialog_combinations_file = os.environ.get(
     "FEATHER_DIALOG_COMBINATIONS_FILE", "data/generated/dialog_combinations.json")
