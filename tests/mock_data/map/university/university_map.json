@@ -9,6 +9,9 @@
             },
         "gymnasium": {
                 "east": "forest.cemetery"
+            },
+        "dorms": {
+                "north": "science_building"
             }
     },
     "aliases": {

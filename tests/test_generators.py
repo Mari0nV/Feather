@@ -38,7 +38,8 @@ def test_that_generators_build_map_data(mocker):
         "university.dorms": {
             "directions": {
                 "south": "university.science_building",
-                "east": "university.gymnasium"
+                "east": "university.gymnasium",
+                "north": "university.science_building"
             },
             "aliases": [
                 "dorms",
