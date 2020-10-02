@@ -64,10 +64,6 @@ places_path = os.environ.get(
 map_path = os.environ.get(
     "FEATHER_MAP_PATH", "data/map")
 
-# Map entry
-map_world_file = os.environ.get(
-    "FEATHER_MAP_WORLD_FILE", f"{map_path}/world_map.json")
-
 # Introduction
 intro_file = os.environ.get(
     "FEATHER_INTRO_FILE", "data/intro.json"

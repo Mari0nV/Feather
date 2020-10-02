@@ -4,7 +4,7 @@ import os
 from feather.config import (
     generated_map_aliases_file,
     generated_map_file,
-    map_world_file
+    map_path
 )
 
 
@@ -73,10 +73,15 @@ def _build_map_path(map_paths, map_dictionary, file_path, parent=None):
 def build_map_data():
     paths = {}
     dictionary = {}
-    _build_map_path(paths, dictionary, map_world_file)
+    for filename in os.listdir(map_path):
+        if "map.json" in filename:
+            filepath = f"{map_path}/{filename}"
 
-    with open(generated_map_file, "w+") as fd:
-        json.dump(paths, fd)
+    if filepath:
+        _build_map_path(paths, dictionary, filepath)
 
-    with open(generated_map_aliases_file, "w+") as fd:
-        json.dump(dictionary, fd)
+        with open(generated_map_file, "w+") as fd:
+            json.dump(paths, fd)
+
+        with open(generated_map_aliases_file, "w+") as fd:
+            json.dump(dictionary, fd)
