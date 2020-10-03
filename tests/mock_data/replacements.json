@@ -1,1 +1,6 @@
-{}
+{
+    "replacements": {
+        "phone": ["telephone"],
+        "university": ["school", "college"]
+    }
+}
