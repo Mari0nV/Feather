@@ -42,14 +42,17 @@ def test_that_build_data_builds_all(mocker):
             os.environ["FEATHER_DIALOG_COMBINATIONS_FILE"],
             os.environ["FEATHER_GENERATED_DIALOG_COMBINATIONS_FILE"])])
 
-    mock_build_dictionary.assert_has_calls([
-        call(
-            ["tests/mock_data/speech/hello.json"],
-            os.environ["FEATHER_GENERATED_DIALOG_FILE"]),
-        call(
-            ["tests/mock_data/action/action.json",
-             "tests/mock_data/action/action2.json"],
-            os.environ["FEATHER_GENERATED_ACTION_FILE"])])
+    assert mock_build_dictionary.call_args_list[0].args == (
+        ["tests/mock_data/speech/hello.json"],
+        os.environ["FEATHER_GENERATED_DIALOG_FILE"])
+
+    assert set(mock_build_dictionary.call_args_list[1].args[0]) == set([
+        "tests/mock_data/action/action2.json",
+        "tests/mock_data/action/action.json"
+    ])
+
+    assert mock_build_dictionary.call_args_list[1].args[1] == \
+        os.environ["FEATHER_GENERATED_ACTION_FILE"]
 
 
 def test_that_build_data_builds_replacements(generated_folder):
