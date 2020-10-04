@@ -1,6 +1,7 @@
 import nltk
 import os
 import pytest
+import shutil
 
 os.environ["FEATHER_INTRO_FILE"] = "tests/mock_data/intro.json"
 os.environ["FEATHER_STATUS_FILE"] = "tests/mock_data/status.json"
@@ -8,7 +9,8 @@ os.environ["FEATHER_REPLACEMENTS_FILE"] = "tests/mock_data/replacements.json"
 os.environ["FEATHER_MOVE_COMBINATIONS_FILE"] = "tests/mock_data/move_combinations.json"
 os.environ["FEATHER_DIALOG_COMBINATIONS_FILE"] = "tests/mock_data/dialog_combinations.json"
 
-os.environ["FEATHER_GENERATED_PATH"] = "tests/mock_data/generated"
+generated_path = "tests/mock_data/generated"
+os.environ["FEATHER_GENERATED_PATH"] = generated_path
 os.environ["FEATHER_GENERATED_MAP_FILE"] = "tests/mock_data/manually_generated/map.json"
 os.environ[
     "FEATHER_GENERATED_MAP_ALIASES_FILE"] = "tests/mock_data/manually_generated/map_aliases.json"
@@ -72,3 +74,11 @@ def move_manager():
     return MoveManager(
         status_manager,
         output_manager)
+
+
+@pytest.yield_fixture
+def generated_folder():
+    if not os.path.exists(generated_path):
+        os.mkdir(generated_path)
+    yield
+    shutil.rmtree(generated_path)

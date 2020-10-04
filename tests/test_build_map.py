@@ -3,7 +3,7 @@ import json
 from feather.generators.build_map import build_map_data
 
 
-def test_that_generators_build_map_data(mocker):
+def test_that_generators_build_map_data(mocker, generated_folder):
     build_map_data.__globals__[
         "generated_map_aliases_file"] = "tests/mock_data/generated/map_aliases.json"
     build_map_data.__globals__[

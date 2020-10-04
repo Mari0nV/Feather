@@ -10,60 +10,6 @@ from feather.generators.build_data import (
 )
 
 
-def test_that_build_data_builds_replacements():
-    build_combinations.__globals__[
-        "generated_replacements_file"] = "tests/mock_data/generated/generated_replacements.json"
-
-    build_replacements()
-
-    with open("tests/mock_data/generated/generated_replacements.json", "r") as fp:
-        replacements = json.load(fp)
-
-    assert replacements == {
-        "telephone": "phone",
-        "school": "university",
-        "college": "university",
-    }
-
-
-def test_that_build_data_builds_combinations():
-    source_file = "tests/mock_data/combinations.json"
-    dest_file = "tests/mock_data/generated/combinations.json"
-
-    build_combinations(source_file, dest_file)
-
-    with open("tests/mock_data/generated/combinations.json", "r") as fp:
-        combinations = json.load(fp)
-
-    assert combinations == {
-        "combinations": [
-            "get up to",
-            "get up",
-            "get to",
-            "get"
-            ]
-        }
-
-
-def test_that_build_data_builds_dictionary():
-    source_files = [
-        "tests/mock_data/action/action.json",
-        "tests/mock_data/action/action2.json"]
-    dest_file = "tests/mock_data/generated/actions.json"
-
-    build_dictionary(source_files, dest_file)
-
-    with open("tests/mock_data/generated/actions.json", "r") as fp:
-        dictionary = json.load(fp)
-
-    assert dictionary == {
-        "make action": "action",
-        "do action": "action",
-        "make second action": "action2",
-        "do second action": "action2"
-    }
-
-
 def test_that_build_data_builds_all(mocker):
     mock_build_dictionary = mocker.Mock()
     mock_build_combinations = mocker.Mock()
@@ -104,3 +50,58 @@ def test_that_build_data_builds_all(mocker):
             ["tests/mock_data/action/action.json",
              "tests/mock_data/action/action2.json"],
             os.environ["FEATHER_GENERATED_ACTION_FILE"])])
+
+
+def test_that_build_data_builds_replacements(generated_folder):
+    build_combinations.__globals__[
+        "generated_replacements_file"] = \
+            "tests/mock_data/generated/generated_replacements.json"
+
+    build_replacements()
+
+    with open("tests/mock_data/generated/generated_replacements.json", "r") as fp:
+        replacements = json.load(fp)
+
+    assert replacements == {
+        "telephone": "phone",
+        "school": "university",
+        "college": "university",
+    }
+
+
+def test_that_build_data_builds_combinations(generated_folder):
+    source_file = "tests/mock_data/combinations.json"
+    dest_file = "tests/mock_data/generated/combinations.json"
+
+    build_combinations(source_file, dest_file)
+
+    with open("tests/mock_data/generated/combinations.json", "r") as fp:
+        combinations = json.load(fp)
+
+    assert combinations == {
+        "combinations": [
+            "get up to",
+            "get up",
+            "get to",
+            "get"
+            ]
+        }
+
+
+def test_that_build_data_builds_dictionary(generated_folder):
+    source_files = [
+        "tests/mock_data/action/action.json",
+        "tests/mock_data/action/action2.json"]
+    dest_file = "tests/mock_data/generated/actions.json"
+
+    build_dictionary(source_files, dest_file)
+
+    with open("tests/mock_data/generated/actions.json", "r") as fp:
+        dictionary = json.load(fp)
+
+    assert dictionary == {
+        "make action": "action",
+        "do action": "action",
+        "make second action": "action2",
+        "do second action": "action2"
+    }
