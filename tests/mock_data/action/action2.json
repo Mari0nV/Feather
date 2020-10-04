@@ -1,11 +1,11 @@
 {
     "results": {
         "default": {
-            "msg": ["msg output"]
+            "msg": ["msg output2"]
         }
     },
     "combinations": [{
         "part1": ["make", "do"],
-        "part2": ["action"]
+        "part2": ["second action"]
     }]
 }

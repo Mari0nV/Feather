@@ -1,8 +1,1 @@
-{
-    "west forest": [
-        "forest.west_forest"
-    ],
-    "woods": [
-        "forest"
-    ]
-}
+{"dorms": ["university.dorms"], "dormitories": ["university.dorms"], "gymnasium": ["university.gymnasium"], "gym": ["university.gymnasium"]}

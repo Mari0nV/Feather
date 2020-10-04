@@ -5,6 +5,8 @@ import pytest
 os.environ["FEATHER_INTRO_FILE"] = "tests/mock_data/intro.json"
 os.environ["FEATHER_STATUS_FILE"] = "tests/mock_data/status.json"
 os.environ["FEATHER_REPLACEMENTS_FILE"] = "tests/mock_data/replacements.json"
+os.environ["FEATHER_MOVE_COMBINATIONS_FILE"] = "tests/mock_data/move_combinations.json"
+os.environ["FEATHER_DIALOG_COMBINATIONS_FILE"] = "tests/mock_data/dialog_combinations.json"
 
 os.environ["FEATHER_GENERATED_PATH"] = "tests/mock_data/generated"
 os.environ["FEATHER_GENERATED_MAP_FILE"] = "tests/mock_data/manually_generated/map.json"
@@ -16,6 +18,8 @@ os.environ[
     "FEATHER_GENERATED_DIALOG_COMBINATIONS_FILE"] = "tests/mock_data/manually_generated/dialog_combinations.json"
 os.environ[
     "FEATHER_GENERATED_ACTION_FILE"] = "tests/mock_data/manually_generated/actions.json"
+os.environ[
+    "FEATHER_GENERATED_DIALOG_FILE"] = "tests/mock_data/manually_generated/dialogs.json"
 os.environ[
     "FEATHER_GENERATED_REPLACEMENTS_FILE"] = "tests/mock_data/manually_generated/replacements.json"
 
