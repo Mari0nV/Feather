@@ -8,7 +8,7 @@ class OutputManager:
         else:
             self.history.append({"output": text})
         print("\n", text)
-    
+
     def save_input(self, text):
         self.history.append({
             "input": text,

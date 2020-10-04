@@ -1,20 +1,35 @@
 import nltk
 import os
 import pytest
+import shutil
 
 os.environ["FEATHER_INTRO_FILE"] = "tests/mock_data/intro.json"
 os.environ["FEATHER_STATUS_FILE"] = "tests/mock_data/status.json"
+os.environ["FEATHER_REPLACEMENTS_FILE"] = "tests/mock_data/replacements.json"
+os.environ["FEATHER_MOVE_COMBINATIONS_FILE"] = "tests/mock_data/move_combinations.json"
+os.environ["FEATHER_DIALOG_COMBINATIONS_FILE"] = "tests/mock_data/dialog_combinations.json"
 
-os.environ["FEATHER_MAP_FILE"] = "tests/mock_data/map.json"
-os.environ["FEATHER_MAP_DICTIONARY_FILE"] = "tests/mock_data/map_dictionary.json"
+generated_path = "tests/mock_data/generated"
+os.environ["FEATHER_GENERATED_PATH"] = generated_path
+os.environ["FEATHER_GENERATED_MAP_FILE"] = "tests/mock_data/manually_generated/map.json"
+os.environ[
+    "FEATHER_GENERATED_MAP_ALIASES_FILE"] = "tests/mock_data/manually_generated/map_aliases.json"
+os.environ[
+    "FEATHER_GENERATED_MOVE_COMBINATIONS_FILE"] = "tests/mock_data/manually_generated/move_combinations.json"
+os.environ[
+    "FEATHER_GENERATED_DIALOG_COMBINATIONS_FILE"] = "tests/mock_data/manually_generated/dialog_combinations.json"
+os.environ[
+    "FEATHER_GENERATED_ACTION_FILE"] = "tests/mock_data/manually_generated/actions.json"
+os.environ[
+    "FEATHER_GENERATED_DIALOG_FILE"] = "tests/mock_data/manually_generated/dialogs.json"
+os.environ[
+    "FEATHER_GENERATED_REPLACEMENTS_FILE"] = "tests/mock_data/manually_generated/replacements.json"
 
-os.environ["FEATHER_ACTION_DICTIONARY_FILE"] = "tests/mock_data/action_dictionary.json"
 os.environ["FEATHER_SPEECH_PATH"] = "tests/mock_data/speech"
 os.environ["FEATHER_ACTION_PATH"] = "tests/mock_data/action"
 os.environ["FEATHER_PLACES_PATH"] = "tests/mock_data/move"
-os.environ["FEATHER_MOVE_COMBINATIONS_FILE"] = "tests/mock_data/move_combinations.json"
-os.environ["FEATHER_DIALOG_COMBINATIONS_FILE"] = "tests/mock_data/dialog_combinations.json"
-os.environ["FEATHER_REPLACEMENTS_FILE"] = "tests/mock_data/replacements.json"
+os.environ["FEATHER_MAP_PATH"] = "tests/mock_data/map"
+
 
 from feather.managers.action_manager import ActionManager
 from feather.managers.dialog_manager import DialogManager
@@ -59,3 +74,11 @@ def move_manager():
     return MoveManager(
         status_manager,
         output_manager)
+
+
+@pytest.yield_fixture
+def generated_folder():
+    if not os.path.exists(generated_path):
+        os.mkdir(generated_path)
+    yield
+    shutil.rmtree(generated_path)

@@ -1,6 +1,12 @@
 import json
 import os
 
+from feather.config import (
+    generated_map_aliases_file,
+    generated_map_file,
+    map_path
+)
+
 
 def _compute_directions(json_file, place, coordinates):
     with open(json_file, "r") as fp:
@@ -42,35 +48,38 @@ def _build_map_path(map_paths, map_dictionary, file_path, parent=None):
     with open(file_path, "r") as fp:
         world_map = json.load(fp)
 
-    if "map" not in world_map:
-        return
+    if "map" in world_map:
+        subdirs = os.listdir(os.path.dirname(file_path))
+        for x, row in enumerate(world_map["map"]):
+            for y, place in enumerate(row):
+                new_parent = ".".join([parent, place]) if parent else place
 
-    subdirs = os.listdir(os.path.dirname(file_path))
-    for x, row in enumerate(world_map["map"]):
-        for y, place in enumerate(row):
-            new_parent = ".".join([parent, place]) if parent else place
+                if place in subdirs:
+                    new_file_path = f"{os.path.dirname(file_path)}/{place}/{place}_map.json"
+                    _build_map_path(map_paths, map_dictionary, new_file_path, new_parent)
 
-            if place in subdirs:
-                new_file_path = f"{os.path.dirname(file_path)}/{place}/{place}_map.json"
-                _build_map_path(map_paths, map_dictionary, new_file_path, new_parent)
+                map_paths[new_parent] = {
+                    "directions": _compute_directions(file_path, new_parent, (x, y))
+                }
 
-            map_paths[new_parent] = {
-                "directions": _compute_directions(file_path, new_parent, (x, y))
-            }
-
-            if "aliases" in world_map and place in world_map["aliases"]:
-                map_paths[new_parent]["aliases"] = world_map["aliases"][place]
-                for alias in world_map["aliases"][place]:
-                    map_dictionary.setdefault(alias, []).append(new_parent)
+                if "aliases" in world_map and place in world_map["aliases"]:
+                    map_paths[new_parent]["aliases"] = world_map["aliases"][place]
+                    for alias in world_map["aliases"][place]:
+                        map_dictionary.setdefault(alias, []).append(new_parent)
 
 
-def build_map_data(json_file, map_paths, map_dictionary):
+def build_map_data():
     paths = {}
     dictionary = {}
-    _build_map_path(paths, dictionary, json_file)
+    for filename in os.listdir(map_path):
+        if "map.json" in filename:
+            filepath = f"{map_path}/{filename}"
 
-    with open(f"data/generated/{map_paths}.json", "w+") as fd:
-        json.dump(paths, fd)
+    if filepath:
+        _build_map_path(paths, dictionary, filepath)
 
-    with open(f"data/generated/{map_dictionary}.json", "w+") as fd:
-        json.dump(dictionary, fd)
+        with open(generated_map_file, "w+") as fd:
+            json.dump(paths, fd)
+
+        with open(generated_map_aliases_file, "w+") as fd:
+            json.dump(dictionary, fd)

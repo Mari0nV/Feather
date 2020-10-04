@@ -1,0 +1,21 @@
+{
+    "map": [
+        ["dorms", "gymnasium"],
+        ["science_building", "cafet"]
+    ],
+    "borders": {
+        "cafet": {
+               "east": "forest.middle_forest"
+            },
+        "gymnasium": {
+                "east": "forest.cemetery"
+            },
+        "dorms": {
+                "north": "science_building"
+            }
+    },
+    "aliases": {
+        "dorms": ["dorms", "dormitories"],
+        "gymnasium": ["gymnasium", "gym"]
+    }
+}

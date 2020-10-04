@@ -1,0 +1,9 @@
+{
+    "combinations": [
+        {
+            "part1": ["get"],
+            "part2": ["up", ""],
+            "part3": ["to", ""]
+        }
+    ]
+}

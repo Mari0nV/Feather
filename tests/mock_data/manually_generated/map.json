@@ -1,0 +1,15 @@
+{
+    "forest.middle_forest": {
+        "directions": {
+            "north": "forest.north_forest",
+            "east": "forest.east_forest",
+            "south": "forest.south_forest",
+            "west": "forest.west_forest"
+        }
+    },
+    "forest": {
+        "directions": {
+            "west": "university"
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import json
 
 from feather.config import (
-    dialog_combinations_file,
+    generated_dialog_combinations_file,
     speech_path
 )
 from feather.managers.input_manager import InputManager
@@ -10,7 +10,7 @@ from feather.utils.utils import choose_best_decomposition
 
 class DialogManager(InputManager):
     def __init__(self, status_manager, output_manager):
-        with open(dialog_combinations_file, "r") as json_file:
+        with open(generated_dialog_combinations_file, "r") as json_file:
             self.dialog_combinations = json.load(json_file)["combinations"]
 
         self.status_manager = status_manager
