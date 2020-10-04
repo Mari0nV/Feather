@@ -1,1 +1,20 @@
-{"dorms": ["university.dorms"], "dormitories": ["university.dorms"], "gymnasium": ["university.gymnasium"], "gym": ["university.gymnasium"]}
+{
+    "dorms": [
+        "university.dorms"
+    ],
+    "dormitories": [
+        "university.dorms"
+    ],
+    "gymnasium": [
+        "university.gymnasium"
+    ],
+    "gym": [
+        "university.gymnasium"
+    ],
+    "west forest": [
+        "forest.west_forest"
+    ],
+    "woods": [
+        "forest"
+    ]
+}
