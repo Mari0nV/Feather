@@ -22,6 +22,7 @@ class StatusManager:
             if category == "place" and value:
                 self.status["previous_place"] = self.status["place"]
                 self.status["place"] = status[0]
+                self.status["information"][status[0]] = True
             elif category == "duration":
                 self.status["day"] += value
             else:

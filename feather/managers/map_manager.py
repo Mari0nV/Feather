@@ -1,8 +1,10 @@
 import json
+import os
 
 from feather.config import (
     generated_map_aliases_file,
-    generated_map_file
+    generated_map_file,
+    map_path
 )
 
 
@@ -25,3 +27,19 @@ class MapManager:
 
     def compute_distance(self, place, destination):
         pass
+
+    def check_event(self, place, day, hours=None):
+        path = f"{map_path}/{place.replace('.', '/')}/{place.split('.')[-1]}_map.json"
+        if os.path.exists(path):
+            with open(path, "r") as fp:
+                content = json.load(fp)
+
+            if "presence" in content:
+                for date in content["presence"].keys():
+                    range_days = date.split('-')
+                    first_day = int(range_days[0].replace("DAY", ""))
+                    last_day = int(range_days[1].replace("DAY", "")) \
+                        if len(range_days) > 1 else first_day
+
+                    if day in range(first_day, last_day + 1):
+                        yield ("presence", content["presence"][date])
